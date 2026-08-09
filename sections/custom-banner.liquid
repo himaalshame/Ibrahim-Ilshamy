@@ -1,98 +1,229 @@
-<div class="custom-banner" {% if section.settings.background_image %}style="background-image: url('{{ section.settings.background_image | image_url: width: 1600 }}');"{% endif %}>
-  <div class="custom-banner__content">
-    <h2 class="custom-banner__heading">{{ section.settings.heading }}</h2>
-    <p class="custom-banner__text">{{ section.settings.description }}</p>
-    <a href="{{ section.settings.button_link }}" class="custom-banner__button">
-      {{ section.settings.button_text }}
+<!-- 1. Top Navbar / Announcement Bar -->
+<div class="top-navbar">
+  <div class="nav-logo">
+    <a href="/">{{ section.settings.logo_text }}</a>
+  </div>
+  
+  <div class="nav-message">
+    <span>{{ section.settings.top_message }}</span>
+  </div>
+  
+  <div class="nav-action">
+    <a href="{{ section.settings.top_btn_link }}" class="choose-gift-btn">
+      {{ section.settings.top_btn_text }} &rarr;
     </a>
   </div>
 </div>
 
+<!-- 2. Hero Banner Content -->
+<div class="hero-banner" style="background-image: url('{% if section.settings.bg_image != blank %}{{ section.settings.bg_image | img_url: 'master' }}{% else %}https://via.placeholder.com/1400x600{% endif %}');">
+  <div class="banner-overlay-content">
+    <h1 class="banner-title">{{ section.settings.heading }}</h1>
+    <p class="banner-description">{{ section.settings.description }}</p>
+    <a href="{{ section.settings.button_link }}" class="banner-shop-btn">
+      <span>{{ section.settings.button_text }}</span>
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</div>
+
+<!-- 3. Bottom Ticker Bar -->
+<div class="bottom-ticker-bar">
+  <p>{{ section.settings.bottom_ticker_text }}</p>
+</div>
+
+<!-- CSS Styling -->
 <style>
-.custom-banner {
-  padding: 80px 40px;
-  background-color: #f4f1ec;
-  background-size: cover;
-  background-position: center;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-}
-
-.custom-banner__content {
-  max-width: 450px;
-}
-
-.custom-banner__heading {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.custom-banner__text {
-  font-size: 16px;
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
-.custom-banner__button {
-  display: inline-block;
-  padding: 14px 36px;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.custom-banner__button:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-
-@media (max-width: 749px) {
-  .custom-banner {
-    padding: 40px 20px;
-    min-height: 300px;
+  /* Top Navbar */
+  .top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
   }
-  .custom-banner__heading {
-    font-size: 26px;
+
+  .nav-logo a {
+    font-size: 18px;
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
-}
+
+  .nav-message {
+    font-size: 13px;
+    color: #333;
+  }
+
+  .choose-gift-btn {
+    background-color: #f7e252;
+    color: #000;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+  }
+
+  .choose-gift-btn:hover {
+    background-color: #e2ce3d;
+  }
+
+  /* Hero Banner */
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 40px 80px;
+  }
+
+  .banner-overlay-content {
+    max-width: 450px;
+  }
+
+  .banner-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    color: #000;
+    line-height: 1.1;
+  }
+
+  .banner-description {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+
+  /* Hover Animation for Shop Button */
+  .banner-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+  }
+
+  .banner-shop-btn .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .banner-shop-btn:hover {
+    background-color: #222;
+  }
+
+  .banner-shop-btn:hover .arrow {
+    transform: translateX(5px);
+  }
+
+  /* Bottom Ticker Bar */
+  .bottom-ticker-bar {
+    text-align: center;
+    padding: 12px 10px;
+    background-color: #fcfcfc;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .top-navbar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px 20px;
+    }
+    .hero-banner {
+      padding: 30px 20px;
+      min-height: 360px;
+    }
+    .banner-title {
+      font-size: 32px;
+    }
+  }
 </style>
 
+<!-- JSON Schema for Shopify Customizer -->
 {% schema %}
 {
   "name": "Custom Banner",
   "settings": [
     {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "top_message",
+      "label": "Top Announcement Message",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "top_btn_text",
+      "label": "Top Button Text",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "top_btn_link",
+      "label": "Top Button Link"
+    },
+    {
       "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image"
+      "id": "bg_image",
+      "label": "Banner Background Image"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "Main Heading",
       "default": "The Gift Guide"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
-      "default": "Discover our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+      "label": "Description Text",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Button text",
-      "default": "Shop now"
+      "label": "Shop Button Label",
+      "default": "SHOP NOW"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button link"
+      "label": "Shop Button Link"
+    },
+    {
+      "type": "text",
+      "id": "bottom_ticker_text",
+      "label": "Bottom Ticker Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     }
   ],
   "presets": [
