@@ -18,7 +18,7 @@
 
   <!-- Hero Banner Content -->
   <div class="hero-banner"-{{ section.id }}" 
-     style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1000 }}');{% endif %}">
+     style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
       <p class="banner-description">{{ section.settings.description }}</p>
@@ -79,6 +79,24 @@
     display: flex;
     align-items: center;
     padding: 40px 80px;
+  }
+
+  .hero-banner-{{ section.id }}  {
+    position: relative;
+  width: 100%;
+  min-height: 520px;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  /* تثبيت موضع خلفية الصورة من اليمين والوسط بدلاً من الاعتماد على المركز المطلق */
+  background-position: right center; 
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px 80px;
+  box-sizing: border-box;
   }
   .banner-overlay-content {
     max-width: 450px;
