@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 30px;
+    padding: 10px 40px;
     background-color: #ffffff;
     border-bottom: 2px dashed #3182ce;
     font-size: 13px;
@@ -19,7 +19,7 @@
   .announcement-btn-{{ section.id }} {
     background-color: #f6e05e;
     color: #000000;
-    padding: 6px 16px;
+    padding: 8px 18px;
     text-decoration: none;
     font-weight: 700;
     font-size: 11px;
@@ -29,14 +29,14 @@
     gap: 6px;
   }
 
-  /* السكشن الرئيسي */
+  /* السكشن الرئيسي للهيرو */
   .custom-banner-{{ section.id }} {
     position: relative;
     width: 100%;
     min-height: 520px;
-    background-repeat: repeat;
-    background-position: center;
-    background-size: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -47,7 +47,7 @@
   }
 
   .banner-content-{{ section.id }} {
-    max-width: 450px;
+    max-width: 420px;
     z-index: 2;
     text-align: left;
   }
@@ -81,12 +81,17 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .banner-button-{{ section.id }}:hover {
+    background-color: #333333;
   }
 
   /* البار السفلي */
   .bottom-info-bar-{{ section.id }} {
     text-align: center;
-    padding: 10px;
+    padding: 12px;
     background-color: #e2e8f0;
     font-size: 11px;
     font-weight: 700;
@@ -100,6 +105,7 @@
       flex-direction: column;
       gap: 10px;
       text-align: center;
+      padding: 10px 15px;
     }
     
     .custom-banner-{{ section.id }} {
@@ -109,6 +115,10 @@
 
     .banner-title-{{ section.id }} {
       font-size: 36px;
+    }
+
+    .banner-content-{{ section.id }} {
+      max-width: 100%;
     }
   }
 {% endstyle %}
