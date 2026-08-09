@@ -1,274 +1,146 @@
-```liquid
-<section
-  class="custom-banner"
-  style="
-    {% if section.settings.bg_image != blank %}
-      background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');
-    {% endif %}
-  "
->
-  <!-- Top Announcement -->
-  <div class="nav-bar">
+<div class="custom-banner-wrapper">
+  <!-- Top Navbar / Announcement Bar -->
+  <div class="top-navbar">
     <div class="nav-logo">
-      {{ section.settings.logo_text }}
+      <a href="">{{ section.settings.logo_text }}</a>
     </div>
-
+    
     <div class="nav-message">
       <span>{{ section.settings.top_message }}</span>
     </div>
-
+    
     <div class="nav-action">
-      <a
-        href="{{ section.settings.top_btn_link | default: '#' }}"
-        class="choose-gift-btn"
-      >
-        {{ section.settings.top_btn_text }} <span>&rarr;</span>
+      <a href="{{ section.settings.top_btn_link | default: '#' }}" class="choose-gift-btn">
+        {{ section.settings.top_btn_text }} &rarr;
       </a>
     </div>
   </div>
 
-  <!-- Hero Content -->
-  <div class="hero-content">
-    <h1>{{ section.settings.heading }}</h1>
-
-    <p>
-      {{ section.settings.description }}
-    </p>
-
-    <a
-      href="{{ section.settings.button_link | default: '#' }}"
-      class="shop-btn"
-    >
-      {{ section.settings.button_text }}
-    </a>
+  <!-- Hero Banner Content -->
+  <div class="hero-banner" style="background-image: url('{% if section.settings.bg_image != blank %}{{ section.settings.bg_image | image_url: width: 1400 }}{% else %}https://via.placeholder.com/1400x600{% endif %}');">
+    <div class="banner-overlay-content">
+      <h1 class="banner-title">{{ section.settings.heading }}</h1>
+      <p class="banner-description">{{ section.settings.description }}</p>
+      <a href="{{ section.settings.button_link | default: '#' }}" class="banner-shop-btn">
+        <span>{{ section.settings.button_text }}</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
   </div>
 
-  <!-- Bottom Ticker -->
-  <div class="bottom-ticker">
-    <span>{{ section.settings.bottom_ticker_text }}</span>
+  <!-- Bottom Ticker Bar -->
+  <div class="bottom-ticker-bar">
+    <p>{{ section.settings.bottom_ticker_text }}</p>
   </div>
-</section>
+</div>
 
 <style>
-  * {
-    box-sizing: border-box;
+  .top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
   }
-
-  .custom-banner {
+  .nav-logo a {
+    font-size: 18px;
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .nav-message {
+    font-size: 13px;
+    color: #333;
+  }
+  .choose-gift-btn {
+    background-color: #f7e252;
+    color: #000;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+  }
+  .choose-gift-btn:hover {
+    background-color: #e2ce3d;
+  }
+  .hero-banner {
     position: relative;
-
     width: 100%;
-    min-height: 100vh;
-
+    min-height: 480px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
-    flex-direction: column;
-
-    overflow: hidden;
-    color: #111;
-  }
-
-  /* =========================
-     TOP NAV
-  ========================= */
-
-  .nav-bar {
-    width: 100%;
-    min-height: 70px;
-
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-
-    padding: 0 40px;
-
-    background: #f7f7f7;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px 80px;
   }
-
-  .nav-logo {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 1px;
+  .banner-overlay-content {
+    max-width: 450px;
   }
-
-  .nav-message {
-    text-align: center;
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  .nav-action {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .choose-gift-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 13px 22px;
-
-    background: #000;
-    color: #fff;
-
-    text-decoration: none;
-
-    font-size: 13px;
+  .banner-title {
+    font-size: 48px;
     font-weight: 700;
-
-    transition: 0.3s ease;
+    margin: 0 0 15px 0;
+    color: #000;
+    line-height: 1.1;
   }
-
-  .choose-gift-btn:hover {
-    background: #333;
-  }
-
-  /* =========================
-     HERO CONTENT
-  ========================= */
-
-  .hero-content {
-    flex: 1;
-
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 80px 20px;
-  }
-
-  .hero-content h1 {
-    margin: 0 0 20px;
-
-    font-size: clamp(48px, 7vw, 100px);
-    line-height: 0.95;
-
-    font-weight: 800;
-    letter-spacing: -3px;
-  }
-
-  .hero-content p {
-    max-width: 650px;
-
-    margin: 0 0 30px;
-
-    font-size: 18px;
-    line-height: 1.6;
-
-    font-weight: 500;
-  }
-
-  .shop-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 180px;
-
-    padding: 16px 30px;
-
-    background: #000;
-    color: #fff;
-
-    text-decoration: none;
-
+  .banner-description {
     font-size: 14px;
-    font-weight: 700;
-
-    transition: 0.3s ease;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 25px;
   }
-
-  .shop-btn:hover {
-    background: #333;
-    transform: translateY(-2px);
-  }
-
-  /* =========================
-     BOTTOM TICKER
-  ========================= */
-
-  .bottom-ticker {
-    width: 100%;
-
-    padding: 13px 20px;
-
-    background: #000;
+  .banner-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #000;
     color: #fff;
-
-    text-align: center;
-
-    font-size: 12px;
-    font-weight: 700;
-
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 1px;
+    transition: background-color 0.3s ease;
   }
-
-  /* =========================
-     MOBILE
-  ========================= */
-
-  @media screen and (max-width: 768px) {
-
-    .custom-banner {
-      min-height: 100svh;
-    }
-
-    .nav-bar {
-      grid-template-columns: 1fr auto;
-
+  .banner-shop-btn .arrow {
+    transition: transform 0.3s ease;
+  }
+  .banner-shop-btn:hover {
+    background-color: #222;
+  }
+  .banner-shop-btn:hover .arrow {
+    transform: translateX(5px);
+  }
+  .bottom-ticker-bar {
+    text-align: center;
+    padding: 12px 10px;
+    background-color: #fcfcfc;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #444;
+  }
+  @media (max-width: 768px) {
+    .top-navbar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
       padding: 15px 20px;
-
-      gap: 15px;
     }
-
-    .nav-logo {
-      font-size: 17px;
+    .hero-banner {
+      padding: 30px 20px;
+      min-height: 360px;
     }
-
-    .nav-message {
-      display: none;
-    }
-
-    .nav-action {
-      justify-content: flex-end;
-    }
-
-    .choose-gift-btn {
-      padding: 11px 15px;
-      font-size: 11px;
-    }
-
-    .hero-content {
-      padding: 60px 20px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(42px, 13vw, 65px);
-      letter-spacing: -2px;
-    }
-
-    .hero-content p {
-      font-size: 15px;
-      max-width: 90%;
-    }
-
-    .shop-btn {
-      width: 180px;
-    }
-
-    .bottom-ticker {
-      font-size: 10px;
-      padding: 12px 10px;
+    .banner-title {
+      font-size: 32px;
     }
   }
 </style>
@@ -303,7 +175,7 @@
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Hero Background Image"
+      "label": "Banner Background Image"
     },
     {
       "type": "text",
@@ -342,4 +214,3 @@
   ]
 }
 {% endschema %}
-```
