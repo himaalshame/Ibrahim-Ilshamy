@@ -1,4 +1,4 @@
-<div class="custom-banner">
+<div class="custom-banner" {% if section.settings.background_image %}style="background-image: url('{{ section.settings.background_image | image_url: width: 1600 }}');"{% endif %}>
   <div class="custom-banner__content">
     <h2 class="custom-banner__heading">{{ section.settings.heading }}</h2>
     <p class="custom-banner__text">{{ section.settings.description }}</p>
@@ -10,31 +10,39 @@
 
 <style>
 .custom-banner {
-  padding: 60px 20px;
-  text-align: center;
+  padding: 80px 40px;
   background-color: #f4f1ec;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-banner__content {
+  max-width: 450px;
 }
 
 .custom-banner__heading {
-  font-size: 32px;
+  font-size: 40px;
+  font-weight: 700;
   margin-bottom: 16px;
 }
 
 .custom-banner__text {
   font-size: 16px;
   margin-bottom: 24px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.5;
 }
 
 .custom-banner__button {
   display: inline-block;
-  padding: 12px 32px;
+  padding: 14px 36px;
   background-color: #000;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+  font-weight: 600;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
@@ -44,8 +52,12 @@
 }
 
 @media (max-width: 749px) {
+  .custom-banner {
+    padding: 40px 20px;
+    min-height: 300px;
+  }
   .custom-banner__heading {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 </style>
@@ -54,6 +66,11 @@
 {
   "name": "Custom Banner",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -64,7 +81,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Explore our range of items perfect for this holiday season"
+      "default": "Discover our curated selection and find the perfect gifts to delight your loved ones this holiday season."
     },
     {
       "type": "text",
