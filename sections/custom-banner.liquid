@@ -1,40 +1,40 @@
-<!-- 1. Top Navbar / Announcement Bar -->
-<div class="top-navbar">
-  <div class="nav-logo">
-    <a href="/">{{ section.settings.logo_text }}</a>
+<div class="custom-banner-wrapper">
+  <!-- Top Navbar / Announcement Bar -->
+  <div class="top-navbar">
+    <div class="nav-logo">
+      <a href="/">{{ section.settings.logo_text }}</a>
+    </div>
+    
+    <div class="nav-message">
+      <span>{{ section.settings.top_message }}</span>
+    </div>
+    
+    <div class="nav-action">
+      <a href="{{ section.settings.top_btn_link | default: '#' }}" class="choose-gift-btn">
+        {{ section.settings.top_btn_text }} &rarr;
+      </a>
+    </div>
   </div>
-  
-  <div class="nav-message">
-    <span>{{ section.settings.top_message }}</span>
+
+  <!-- Hero Banner Content -->
+  <div class="hero-banner" style="background-image: url('{% if section.settings.bg_image != blank %}{{ section.settings.bg_image | image_url: width: 1400 }}{% else %}https://via.placeholder.com/1400x600{% endif %}');">
+    <div class="banner-overlay-content">
+      <h1 class="banner-title">{{ section.settings.heading }}</h1>
+      <p class="banner-description">{{ section.settings.description }}</p>
+      <a href="{{ section.settings.button_link | default: '#' }}" class="banner-shop-btn">
+        <span>{{ section.settings.button_text }}</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
   </div>
-  
-  <div class="nav-action">
-    <a href="{{ section.settings.top_btn_link }}" class="choose-gift-btn">
-      {{ section.settings.top_btn_text }} &rarr;
-    </a>
+
+  <!-- Bottom Ticker Bar -->
+  <div class="bottom-ticker-bar">
+    <p>{{ section.settings.bottom_ticker_text }}</p>
   </div>
 </div>
 
-<!-- 2. Hero Banner Content -->
-<div class="hero-banner" style="background-image: url('{% if section.settings.bg_image != blank %}{{ section.settings.bg_image | img_url: 'master' }}{% else %}https://via.placeholder.com/1400x600{% endif %}');">
-  <div class="banner-overlay-content">
-    <h1 class="banner-title">{{ section.settings.heading }}</h1>
-    <p class="banner-description">{{ section.settings.description }}</p>
-    <a href="{{ section.settings.button_link }}" class="banner-shop-btn">
-      <span>{{ section.settings.button_text }}</span>
-      <span class="arrow">&rarr;</span>
-    </a>
-  </div>
-</div>
-
-<!-- 3. Bottom Ticker Bar -->
-<div class="bottom-ticker-bar">
-  <p>{{ section.settings.bottom_ticker_text }}</p>
-</div>
-
-<!-- CSS Styling -->
 <style>
-  /* Top Navbar */
   .top-navbar {
     display: flex;
     justify-content: space-between;
@@ -43,7 +43,6 @@
     background-color: #ffffff;
     border-bottom: 1px solid #e5e5e5;
   }
-
   .nav-logo a {
     font-size: 18px;
     font-weight: 800;
@@ -52,12 +51,10 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-
   .nav-message {
     font-size: 13px;
     color: #333;
   }
-
   .choose-gift-btn {
     background-color: #f7e252;
     color: #000;
@@ -68,12 +65,9 @@
     border-radius: 2px;
     transition: background-color 0.2s ease;
   }
-
   .choose-gift-btn:hover {
     background-color: #e2ce3d;
   }
-
-  /* Hero Banner */
   .hero-banner {
     position: relative;
     width: 100%;
@@ -85,11 +79,9 @@
     align-items: center;
     padding: 40px 80px;
   }
-
   .banner-overlay-content {
     max-width: 450px;
   }
-
   .banner-title {
     font-size: 48px;
     font-weight: 700;
@@ -97,15 +89,12 @@
     color: #000;
     line-height: 1.1;
   }
-
   .banner-description {
     font-size: 14px;
     color: #333;
     line-height: 1.5;
     margin-bottom: 25px;
   }
-
-  /* Hover Animation for Shop Button */
   .banner-shop-btn {
     display: inline-flex;
     align-items: center;
@@ -119,20 +108,15 @@
     letter-spacing: 1px;
     transition: background-color 0.3s ease;
   }
-
   .banner-shop-btn .arrow {
     transition: transform 0.3s ease;
   }
-
   .banner-shop-btn:hover {
     background-color: #222;
   }
-
   .banner-shop-btn:hover .arrow {
     transform: translateX(5px);
   }
-
-  /* Bottom Ticker Bar */
   .bottom-ticker-bar {
     text-align: center;
     padding: 12px 10px;
@@ -144,8 +128,6 @@
     text-transform: uppercase;
     color: #444;
   }
-
-  /* Responsive Design */
   @media (max-width: 768px) {
     .top-navbar {
       flex-direction: column;
@@ -163,7 +145,6 @@
   }
 </style>
 
-<!-- JSON Schema for Shopify Customizer -->
 {% schema %}
 {
   "name": "Custom Banner",
