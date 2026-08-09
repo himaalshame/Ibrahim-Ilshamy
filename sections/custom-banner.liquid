@@ -2,7 +2,7 @@
   <!-- Top Navbar / Announcement Bar -->
   <div class="top-navbar">
     <div class="nav-logo">
-      <a href="">{{ section.settings.logo_text }}</a>
+      <a href="#">{{ section.settings.logo_text }}</a>
     </div>
     
     <div class="nav-message">
@@ -16,9 +16,22 @@
     </div>
   </div>
 
-  <!-- Hero Banner Content -->
-  <div class="hero-banner"-{{ section.id }}" 
-     style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
+  <!-- Hero Banner Section -->
+  <div class="hero-banner-container">
+    
+    <!-- 1. ديف مفصول تماماً للصورة فقط -->
+    <div class="hero-image-wrapper">
+      {% if section.settings.bg_image != blank %}
+        <img 
+          src="{{ section.settings.bg_image | image_url: width: 2000 }}" 
+          alt="{{ section.settings.heading | escape }}"
+          class="hero-bg-img"
+          loading="eager"
+        >
+      {% endif %}
+    </div>
+
+    <!-- 2. ديف المحتوى النصي فوق الصورة -->
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
       <p class="banner-description">{{ section.settings.description }}</p>
@@ -27,6 +40,7 @@
         <span class="arrow">&rarr;</span>
       </a>
     </div>
+
   </div>
 
   <!-- Bottom Ticker Bar -->
@@ -36,6 +50,12 @@
 </div>
 
 <style>
+  .custom-banner-wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  /* Top Navbar */
   .top-navbar {
     display: flex;
     justify-content: space-between;
@@ -43,8 +63,8 @@
     padding: 25px 40px;
     background-color: #f5f5f5;
     border-bottom: 1px solid #e5e5e5;
-
-
+    position: relative;
+    z-index: 10;
   }
   .nav-logo a {
     font-size: 11px;
@@ -71,36 +91,45 @@
   .choose-gift-btn:hover {
     background-color: #e2ce3d;
   }
-  .hero-banner {
+
+  /* Hero Container */
+  .hero-banner-container {
     position: relative;
     width: 100%;
-    height: 780px ;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    min-height: 600px;
     display: flex;
     align-items: center;
-    padding: 40px 80px;
+    padding: 60px 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #ffffff;
   }
 
-  .hero-banner-{{ section.id }}  {
-    position: relative;
-  width: 100%;
-  min-height: cover;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right center; 
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 60px 80px;
-  box-sizing: border-box;
-  }
-
-  .banner-overlay-content {
-    bottom:25%;
+  /* ديف الصورة المستقل */
+  .hero-image-wrapper {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
   }
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* محتوى الهيرو النصي */
+  .banner-overlay-content {
+    position: relative;
+    z-index: 2;
+    max-width: 450px;
+  }
+
   .banner-title {
     font-size: 48px;
     font-weight: 700;
@@ -136,7 +165,11 @@
   .banner-shop-btn:hover .arrow {
     transform: translateX(5px);
   }
+
+  /* Bottom Ticker */
   .bottom-ticker-bar {
+    position: relative;
+    z-index: 10;
     text-align: center;
     padding: 12px 10px;
     background-color: #fcfcfc;
@@ -147,6 +180,7 @@
     text-transform: uppercase;
     color: #444;
   }
+
   @media (max-width: 768px) {
     .top-navbar {
       flex-direction: column;
@@ -154,12 +188,15 @@
       text-align: center;
       padding: 15px 20px;
     }
-    .hero-banner {
-      padding: 30px 20px;
-      min-height: 360px;
+    .hero-banner-container {
+      padding: 40px 20px;
+      min-height: 400px;
     }
     .banner-title {
       font-size: 32px;
+    }
+    .banner-overlay-content {
+      max-width: 100%;
     }
   }
 </style>
