@@ -1,410 +1,213 @@
-<section class="custom-banner">
-
-  <div class="banner-canvas">
-
-    <!-- Background Drawing -->
-    {% if section.settings.bg_image != blank %}
-      <img
-        src="{{ section.settings.bg_image | image_url: width: 2000 }}"
-        alt="{{ section.settings.heading | escape }}"
-        class="hero-bg-img"
-        loading="eager"
-        width="{{ section.settings.bg_image.width }}"
-        height="{{ section.settings.bg_image.height }}"
-      >
-    {% endif %}
-
-
-    <!-- Top Navigation -->
-    <div class="banner-top">
-
-      <div class="banner-logo">
-        {{ section.settings.logo_text }}
-      </div>
-
-      <div class="nav-message">
-        <span>{{ section.settings.top_message }}</span>
-      </div>
-
-      <div class="nav-action">
-        <a
-          href="{{ section.settings.top_btn_link | default: '#' }}"
-          class="choose-gift-btn"
-        >
-          <span>{{ section.settings.top_btn_text }}</span>
-          <span class="top-arrow">→</span>
-        </a>
-      </div>
-
+<div class="custom-banner-wrapper">
+  <!-- Top Navbar / Announcement Bar -->
+  <div class="top-navbar">
+    <div class="nav-logo">
+      <a href="#">{{ section.settings.logo_text }}</a>
     </div>
-
-
-    <!-- Main Content -->
-    <div class="banner-overlay-content">
-
-      <h1 class="banner-title">
-        {{ section.settings.heading }}
-      </h1>
-
-      <p class="banner-description">
-        {{ section.settings.description | replace: '//', '<br>' }}
-      </p>
-
-      <a
-        href="{{ section.settings.button_link | default: '#' }}"
-        class="banner-shop-btn"
-      >
-        <span>{{ section.settings.button_text }}</span>
-        <span class="arrow">→</span>
+    
+    <div class="nav-message">
+      <span>{{ section.settings.top_message }}</span>
+    </div>
+    
+    <div class="nav-action">
+      <a href="{{ section.settings.top_btn_link | default: '#' }}" class="choose-gift-btn">
+        {{ section.settings.top_btn_text }} &rarr;
       </a>
+    </div>
+  </div>
 
+  <!-- Hero Banner Section -->
+  <div class="hero-banner-container">
+    
+
+    <div class="hero-image-wrapper">
+      {% if section.settings.bg_image != blank %}
+  <img 
+    src="{{ section.settings.bg_image | image_url: width: 2000 }}" 
+    alt="{{ section.settings.heading | escape }}"
+    class="hero-bg-img"
+    loading="eager"
+    width="{{ section.settings.bg_image.width }}"
+    height="{{ section.settings.bg_image.height }}"
+  >
+  {% endif %}
     </div>
 
 
-    <!-- Bottom Ticker -->
-    <div class="banner-ticker">
-      {{ section.settings.bottom_ticker_text }}
+    <div class="banner-overlay-content">
+      <h1 class="banner-title">{{ section.settings.heading }}</h1>
+      <p class="banner-description">{{ section.settings.description | replace: '//', '<br>' }}</p>
+      <a href="{{ section.settings.button_link | default: '#' }}" class="banner-shop-btn">
+        <span>{{ section.settings.button_text }}</span>
+        <span class="arrow">&rarr;</span>
+      </a>
     </div>
 
   </div>
 
-</section>
-
+  <!-- Bottom Ticker Bar -->
+  <div class="bottom-ticker-bar">
+    <p>{{ section.settings.bottom_ticker_text }}</p>
+  </div>
+</div>
 
 <style>
-
-  /* =========================================
-     MAIN CANVAS
-  ========================================= */
-
-  .custom-banner {
+  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+  .custom-banner-wrapper {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    position: relative;
   }
 
-  /*
-    نفس نسبة الصورة الأصلية:
-    616 / 376
+  /* Top Navbar */
+  .top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 10;
+  }
+  .nav-logo a {
+    font-size: 11px;
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .nav-message {
+    font-size: 13px;
+    color: #333;
+  }
+  .choose-gift-btn {
+    background-color: #f7e252;
+    color: #000;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+  }
+  .choose-gift-btn:hover {
+    background-color: #e2ce3d;
+  }
 
-    وبالتالي لما العرض يتغير
-    الارتفاع يتغير بنفس النسبة.
-  */
-
-  .banner-canvas {
+  /* Hero Container - الاعتماد على نسبة أبعاد ثابتة لتتكيف مع الزوم دون تغير */
+  .hero-banner-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 616 / 376;
+    aspect-ratio: 16 / 7; /* نسبة العرض للارتفاع الثابتة للسكشن */
+    height: 780px;
+    display: flex;
+    align-items: center;
+    padding: 4vw 6vw; /* المسافات الخارجية تتناسب تلقائياً مع حجم الشاشة */
+    box-sizing: border-box;
     overflow: hidden;
-
-    /*
-      بنستخدم container units
-      علشان النصوص نفسها تكبر وتصغر
-      مع حجم الرسمة.
-    */
-    container-type: inline-size;
+    background-color: #ffffff;
   }
 
-
-  /* =========================================
-     BACKGROUND DRAWING
-  ========================================= */
-
-  .hero-bg-img {
+  /* ديف الصورة المطلق */
+  .hero-image-wrapper {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
-    /*
-      الصورة نفسها كاملة
-      ومش هتتقص.
-    */
-    object-fit: fill;
-
-    display: block;
-
     z-index: 1;
+    pointer-events: none;
   }
 
-
-  /* =========================================
-     TOP BAR
-  ========================================= */
-
-  .banner-top {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
+  /* الصورة تغطي 100% عرض وطول دون قص أجزاء منها */
+  .hero-bg-img {
     width: 100%;
-
-    /*
-      ارتفاع الـ Header بالنسبة للصورة
-    */
-    height: 7.2%;
-
-    z-index: 10;
-
-    display: flex;
-    align-items: center;
-  }
-
-
-  /* =========================================
-     LOGO
-  ========================================= */
-
-  .banner-logo {
-    position: absolute;
-
-    left: 4.8%;
-    top: 18%;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 2.1cqw;
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing: 0.02em;
-
-    color: #111;
-
-    white-space: nowrap;
-  }
-
-
-  /* =========================================
-     TOP MESSAGE
-  ========================================= */
-
-  .nav-message {
-    position: absolute;
-
-    left: 50%;
-    top: 20%;
-
-    transform: translateX(-50%);
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 1.15cqw;
-    font-weight: 400;
-
-    color: #111;
-
-    white-space: nowrap;
-  }
-
-
-  /* =========================================
-     CHOOSE GIFT BUTTON
-  ========================================= */
-
-  .nav-action {
-    position: absolute;
-
-    right: 3.8%;
-    top: 13%;
-
-    height: 70%;
-  }
-
-  .choose-gift-btn {
     height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 2.1cqw;
-
-    background: #fff000;
-
-    color: #111;
-
-    text-decoration: none;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 1.05cqw;
-    font-weight: 600;
-
-    white-space: nowrap;
+    object-fit: fill; /* يضمن تمدد الصورة بالكامل 100% عرضاً وطولاً */
+    display: block;
   }
 
-  .top-arrow {
-    margin-left: 1.1cqw;
-
-    font-size: 1.5cqw;
-    line-height: 1;
-  }
-
-
-  /* =========================================
-     MAIN CONTENT
-  ========================================= */
-
+  /* المحتوى النصي */
   .banner-overlay-content {
-    position: absolute;
-
-    /*
-      مكان المحتوى بالنسبة للصورة
-    */
-
-    left: 4.8%;
-    top: 55.2%;
-
-    z-index: 5;
-
-    width: 37%;
+    position: relative;
+    z-index: 2;
+    max-width: 35vw;
+    top:30%;
   }
-
-
-  /* =========================================
-     HEADING
-  ========================================= */
 
   .banner-title {
-    margin: 0 0 3.2% 0;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 6cqw;
-
+    font-family: 'Jost', sans-serif;
+    font-size: 70px; 
     font-weight: 500;
+    top: 450px ;
+    color: #000;
+    line-height: 100%;
+  }
+  .banner-description {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    line-height: 140%;
+    margin-bottom: 2vw;
+  }
+  .banner-shop-btn {
+    font-family: 'Jost', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 55px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20.48px;
+    transition: background-color 0.3s ease;
+  }
+  .banner-shop-btn .arrow {
+    transition: transform 0.3s ease;
+  }
+  .banner-shop-btn:hover {
+    background-color: #222;
+  }
+  .banner-shop-btn:hover .arrow {
+    transform: translateX(5px);
+  }
 
-    line-height: 0.95;
-
-    letter-spacing: -0.035em;
-
+  /* Bottom Ticker */
+  .bottom-ticker-bar {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 8px 50px ;
+    gap: 375px ;
+    background-color: #f5f5f5;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     color: #000;
   }
 
-
-  /* =========================================
-     DESCRIPTION
-  ========================================= */
-
-  .banner-description {
-    margin: 0 0 5.5% 0;
-
-    max-width: 31cqw;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 1.35cqw;
-
-    line-height: 1.45;
-
-    font-weight: 400;
-
-    color: #111;
-  }
-
-
-  /* =========================================
-     SHOP NOW BUTTON
-  ========================================= */
-
-  .banner-shop-btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    width: 15.2cqw;
-    height: 5.5cqw;
-
-    padding: 0 1.8cqw;
-
-    background: #050505;
-
-    color: #fff;
-
-    text-decoration: none;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 1.05cqw;
-
-    font-weight: 500;
-
-    box-sizing: border-box;
-  }
-
-  .banner-shop-btn .arrow {
-    font-size: 1.5cqw;
-
-    line-height: 1;
-  }
-
-
-  /* =========================================
-     BOTTOM TICKER
-  ========================================= */
-
-  .banner-ticker {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-
-    height: 4.3%;
-
-    z-index: 10;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 0.95cqw;
-
-    font-weight: 500;
-
-    color: #111;
-
-    white-space: nowrap;
-
-    text-align: center;
-  }
-
-
-  /* =========================================
-     MOBILE
-  ========================================= */
-
-  @media screen and (max-width: 600px) {
-
-    .banner-canvas {
-      /*
-        ما نغيرش الـ aspect ratio
-        علشان الرسمة تفضل كاملة.
-      */
-      aspect-ratio: 616 / 376;
+  @media (max-width: 768px) {
+    .top-navbar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px 20px;
     }
-
-    .banner-title {
-      letter-spacing: -0.04em;
+    .hero-banner-container {
+      aspect-ratio: 4 / 3; /* تعديل النسبة للموبايل لتبقى واضحة ومناسبة */
+      padding: 30px 20px;
+      min-height: 320px;
     }
-
-    .banner-description {
-      line-height: 1.35;
+    .banner-overlay-content {
+      max-width: 100%;
     }
-
   }
-
 </style>
-
 
 {% schema %}
 {
@@ -448,7 +251,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Description Text",
-      "default": "Discover Joy: Your Ultimate Holiday Gift Destination.//Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     },
     {
       "type": "text",
