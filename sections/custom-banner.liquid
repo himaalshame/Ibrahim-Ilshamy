@@ -19,7 +19,7 @@
   <!-- Hero Banner Section -->
   <div class="hero-banner-container">
     
-    <!-- ديف منفصل ومثبت للصورة لتتفاعل بمرونة مع الزوم -->
+    <!-- ديف منفصل تماماً للصورة لتغطي العرض والطول بالكامل -->
     <div class="hero-image-wrapper">
       {% if section.settings.bg_image != blank %}
         <img 
@@ -31,7 +31,7 @@
       {% endif %}
     </div>
 
-    <!-- ديف المحتوى النصي فوق الصورة -->
+    <!-- المحتوى النصي فوق الصورة -->
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
       <p class="banner-description">{{ section.settings.description }}</p>
@@ -92,38 +92,40 @@
     background-color: #e2ce3d;
   }
 
-  /* Hero Container - التنسيق الجديد للحفاظ على الثبات */
+  /* Hero Container - الاعتماد على نسبة أبعاد ثابتة لتتكيف مع الزوم دون تغير */
   .hero-banner-container {
     position: relative;
     width: 100%;
-    min-height: 550px;
+    aspect-ratio: 16 / 7; /* نسبة العرض للارتفاع الثابتة للسكشن */
+    min-height: 400px;
     display: flex;
     align-items: center;
-    padding: 60px 80px;
+    padding: 4vw 6vw; /* المسافات الخارجية تتناسب تلقائياً مع حجم الشاشة */
     box-sizing: border-box;
     overflow: hidden;
     background-color: #ffffff;
   }
 
-  /* ديف الصورة المطلق والمرن مع الزوم */
+  /* ديف الصورة المطلق */
   .hero-image-wrapper {
     position: absolute;
-    inset: 0; /* تغطي السكشن بالكامل (top:0, right:0, bottom:0, left:0) */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
     pointer-events: none;
   }
 
+  /* الصورة تغطي 100% عرض وطول دون قص أجزاء منها */
   .hero-bg-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* تجعل الصورة تكبر وتصغر بنسبة أبعادها الأصلية مع السكشن */
-    object-position: right center; /* تثبيت تركيز الرسمة ناحية اليمين أثناء حركة الزوم */
+    object-fit: fill; /* يضمن تمدد الصورة بالكامل 100% عرضاً وطولاً */
     display: block;
   }
 
-  /* المحتوى النصي فوق الصورة */
+  /* المحتوى النصي */
   .banner-overlay-content {
     position: relative;
     z-index: 2;
@@ -131,14 +133,14 @@
   }
 
   .banner-title {
-    font-size: 48px;
+    font-size: clamp(28px, 4vw, 48px); /* تكبير/تصغير الخط بمرونة مع الزوم */
     font-weight: 700;
     margin: 0 0 15px 0;
     color: #000;
     line-height: 1.1;
   }
   .banner-description {
-    font-size: 14px;
+    font-size: clamp(12px, 1.2vw, 15px);
     color: #333;
     line-height: 1.5;
     margin-bottom: 25px;
@@ -189,17 +191,12 @@
       padding: 15px 20px;
     }
     .hero-banner-container {
-      padding: 40px 20px;
-      min-height: 380px;
-    }
-    .banner-title {
-      font-size: 32px;
+      aspect-ratio: 4 / 3; /* تعديل النسبة للموبايل لتبقى واضحة ومناسبة */
+      padding: 30px 20px;
+      min-height: 320px;
     }
     .banner-overlay-content {
       max-width: 100%;
-    }
-    .hero-bg-img {
-      object-position: center center; /* يتمركز في الشاشات الصغيرة لتغطية أفضل */
     }
   }
 </style>
