@@ -60,304 +60,155 @@
     position: relative;
   }
 
- /* =========================
-   HERO CONTAINER
-========================= */
-
-.hero-banner-container {
-  position: relative;
-  width: 100%;
-
-  /* نفس نسبة صورة التصميم */
-  aspect-ratio: 616 / 376;
-
-  height: auto;
-
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-
-  background: #fff;
-}
-
-
-/* =========================
-   HERO IMAGE
-========================= */
-
-.hero-image-wrapper {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  z-index: 1;
-
-  pointer-events: none;
-}
-
-
-.hero-bg-img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  /*
-    مهم:
-    الصورة لا يتم قصها.
-    والـ container له نفس نسبة الصورة.
-  */
-  object-fit: fill;
-
-  margin: 0;
-}
-
-
-/* =========================
-   HERO CONTENT
-========================= */
-
-.banner-overlay-content {
-  position: absolute;
-
-  z-index: 2;
-
-  /*
-    مكان المحتوى بالنسبة للرسمة
-  */
-  left: 4.8%;
-  top: 55%;
-
-  width: 36%;
-
-  margin: 0;
-}
-
-
-/* =========================
-   TITLE
-========================= */
-
-.banner-title {
-  margin: 0 0 4% 0;
-
-  font-family: 'Jost', sans-serif;
-
-  /*
-    الحجم يكبر ويصغر مع الـ Hero
-  */
-  font-size: 6cqw;
-
-  font-weight: 500;
-
-  line-height: 0.95;
-
-  color: #000;
-
-  letter-spacing: -0.03em;
-}
-
-
-/* =========================
-   DESCRIPTION
-========================= */
-
-.banner-description {
-  margin: 0 0 6% 0;
-
-  font-family: 'Jost', sans-serif;
-
-  font-size: 1.35cqw;
-
-  font-weight: 400;
-
-  color: #000;
-
-  line-height: 1.4;
-
-  max-width: 31cqw;
-}
-
-
-/* =========================
-   SHOP BUTTON
-========================= */
-
-.banner-shop-btn {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  width: 15cqw;
-  height: 5.5cqw;
-
-  padding: 0 1.8cqw;
-
-  box-sizing: border-box;
-
-  font-family: 'Jost', sans-serif;
-
-  background-color: #000;
-
-  color: #fff;
-
-  text-decoration: none;
-
-  font-size: 1.05cqw;
-
-  line-height: 1;
-}
-
-
-.banner-shop-btn .arrow {
-  transition: transform 0.3s ease;
-}
-
-
-.banner-shop-btn:hover {
-  background-color: #222;
-}
-
-
-.banner-shop-btn:hover .arrow {
-  transform: translateX(5px);
-}
-
-
-/* =========================
-   TOP MESSAGE
-========================= */
-
-.nav-message {
-  position: absolute;
-
-  z-index: 10;
-
-  top: 1.5%;
-
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  font-size: 1.1cqw;
-
-  color: #333;
-
-  white-space: nowrap;
-}
-
-
-/* =========================
-   CHOOSE GIFT
-========================= */
-
-.nav-action {
-  position: absolute;
-
-  z-index: 10;
-
-  top: 0.8%;
-
-  right: 3.8%;
-
-  height: 5.5%;
-}
-
-
-.choose-gift-btn {
-  display: flex;
-
-  align-items: center;
-
-  height: 100%;
-
-  padding: 0 2cqw;
-
-  background-color: #f7e252;
-
-  color: #000;
-
-  font-size: 1cqw;
-
-  font-weight: bold;
-
-  text-decoration: none;
-
-  border-radius: 2px;
-
-  white-space: nowrap;
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-.banner-logo {
-  position: absolute;
-
-  z-index: 10;
-
-  top: 1.5%;
-
-  left: 4.8%;
-
-  font-family: Arial, sans-serif;
-
-  font-size: 1.7cqw;
-
-  font-weight: 800;
-
-  color: #000;
-
-  letter-spacing: 0.05em;
-
-  white-space: nowrap;
-}
-
-
-/* =========================
-   BOTTOM TICKER
-========================= */
-
-.bottom-ticker-bar {
-  position: absolute;
-
-  z-index: 10;
-
-  left: 0;
-  bottom: 0;
-
-  width: 100%;
-
-  height: 4%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  background-color: transparent;
-
-  border: 0;
-
-  font-size: 0.9cqw;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-
-  color: #000;
-
-  white-space: nowrap;
-}
+  /* Top Navbar */
+  .top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 10;
+  }
+  .nav-logo a {
+    font-size: 11px;
+    font-weight: 800;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .nav-message {
+    font-size: 13px;
+    color: #333;
+  }
+  .choose-gift-btn {
+    background-color: #f7e252;
+    color: #000;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+  }
+  .choose-gift-btn:hover {
+    background-color: #e2ce3d;
+  }
+
+  /* Hero Container - الاعتماد على نسبة أبعاد ثابتة لتتكيف مع الزوم دون تغير */
+  .hero-banner-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 7; /* نسبة العرض للارتفاع الثابتة للسكشن */
+    height: 780px;
+    display: flex;
+    align-items: center;
+    padding: 4vw 6vw; /* المسافات الخارجية تتناسب تلقائياً مع حجم الشاشة */
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+
+  /* ديف الصورة المطلق */
+  .hero-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* الصورة تغطي 100% عرض وطول دون قص أجزاء منها */
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* يضمن تمدد الصورة بالكامل 100% عرضاً وطولاً */
+    display: block;
+  }
+
+  /* المحتوى النصي */
+  .banner-overlay-content {
+    position: relative;
+    z-index: 2;
+    max-width: 35vw;
+    top:30%;
+  }
+
+  .banner-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 70px; 
+    font-weight: 500;
+    top: 450px ;
+    color: #000;
+    line-height: 100%;
+  }
+  .banner-description {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    line-height: 140%;
+    margin-bottom: 2vw;
+  }
+  .banner-shop-btn {
+    font-family: 'Jost', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 55px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20.48px;
+    transition: background-color 0.3s ease;
+  }
+  .banner-shop-btn .arrow {
+    transition: transform 0.3s ease;
+  }
+  .banner-shop-btn:hover {
+    background-color: #222;
+  }
+  .banner-shop-btn:hover .arrow {
+    transform: translateX(5px);
+  }
+
+  /* Bottom Ticker */
+  .bottom-ticker-bar {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 8px 50px ;
+    gap: 375px ;
+    background-color: #f5f5f5;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  @media (max-width: 768px) {
+    .top-navbar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px 20px;
+    }
+    .hero-banner-container {
+      aspect-ratio: 4 / 3; /* تعديل النسبة للموبايل لتبقى واضحة ومناسبة */
+      padding: 30px 20px;
+      min-height: 320px;
+    }
+    .banner-overlay-content {
+      max-width: 100%;
+    }
+  }
 </style>
 
 {% schema %}
