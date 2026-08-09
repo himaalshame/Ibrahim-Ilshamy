@@ -19,7 +19,7 @@
   <!-- Hero Banner Section -->
   <div class="hero-banner-container">
     
-    <!-- 1. ديف مفصول تماماً للصورة فقط -->
+    <!-- ديف منفصل ومثبت للصورة لتتفاعل بمرونة مع الزوم -->
     <div class="hero-image-wrapper">
       {% if section.settings.bg_image != blank %}
         <img 
@@ -31,7 +31,7 @@
       {% endif %}
     </div>
 
-    <!-- 2. ديف المحتوى النصي فوق الصورة -->
+    <!-- ديف المحتوى النصي فوق الصورة -->
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
       <p class="banner-description">{{ section.settings.description }}</p>
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 40px;
+    padding: 20px 40px;
     background-color: #f5f5f5;
     border-bottom: 1px solid #e5e5e5;
     position: relative;
@@ -92,11 +92,11 @@
     background-color: #e2ce3d;
   }
 
-  /* Hero Container */
+  /* Hero Container - التنسيق الجديد للحفاظ على الثبات */
   .hero-banner-container {
     position: relative;
     width: 100%;
-    min-height: 600px;
+    min-height: 550px;
     display: flex;
     align-items: center;
     padding: 60px 80px;
@@ -105,11 +105,10 @@
     background-color: #ffffff;
   }
 
-  /* ديف الصورة المستقل */
+  /* ديف الصورة المطلق والمرن مع الزوم */
   .hero-image-wrapper {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0; /* تغطي السكشن بالكامل (top:0, right:0, bottom:0, left:0) */
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -119,11 +118,12 @@
   .hero-bg-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: right center;
+    object-fit: cover; /* تجعل الصورة تكبر وتصغر بنسبة أبعادها الأصلية مع السكشن */
+    object-position: right center; /* تثبيت تركيز الرسمة ناحية اليمين أثناء حركة الزوم */
+    display: block;
   }
 
-  /* محتوى الهيرو النصي */
+  /* المحتوى النصي فوق الصورة */
   .banner-overlay-content {
     position: relative;
     z-index: 2;
@@ -190,13 +190,16 @@
     }
     .hero-banner-container {
       padding: 40px 20px;
-      min-height: 400px;
+      min-height: 380px;
     }
     .banner-title {
       font-size: 32px;
     }
     .banner-overlay-content {
       max-width: 100%;
+    }
+    .hero-bg-img {
+      object-position: center center; /* يتمركز في الشاشات الصغيرة لتغطية أفضل */
     }
   }
 </style>
