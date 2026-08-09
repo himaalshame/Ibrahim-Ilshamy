@@ -1,11 +1,13 @@
 {% style %}
-  /* البار العلوي */
+  /* البار العلوي (مستقل تماماً) */
   .top-announcement-bar-{{ section.id }} {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background-color: #ffffff;
+    background-color: #ffffff; /* لون أبيض صريح بدون شفافية */
     border-bottom: 2px dashed #3182ce;
     font-size: 13px;
     font-weight: 600;
@@ -29,9 +31,10 @@
     gap: 6px;
   }
 
-  /* السكشن الرئيسي للهيرو */
+  /* السكشن الرئيسي للهيرو (الصورة مطبقة هنا فقط) */
   .custom-banner-{{ section.id }} {
     position: relative;
+    z-index: 1;
     width: 100%;
     min-height: 520px;
     background-repeat: no-repeat;
@@ -88,8 +91,10 @@
     background-color: #333333;
   }
 
-  /* البار السفلي */
+  /* البار السفلي (مستقل تماماً) */
   .bottom-info-bar-{{ section.id }} {
+    position: relative;
+    z-index: 10;
     text-align: center;
     padding: 12px;
     background-color: #e2e8f0;
@@ -123,14 +128,14 @@
   }
 {% endstyle %}
 
-<!-- البار العلوي -->
+<!-- 1. البار العلوي (بدون خلفية الصورة) -->
 <div class="top-announcement-bar-{{ section.id }}">
   <div class="logo-text">TISSO VISON</div>
   <div class="announcement-center-{{ section.id }}">Find the ideal gift for your loved ones.</div>
   <a href="#" class="announcement-btn-{{ section.id }}">CHOOSE GIFT &rarr;</a>
 </div>
 
-<!-- الهيرو بنر الرئيسي -->
+<!-- 2. الهيرو بنر (هنا فقط تطبق خلفية الصورة) -->
 <div class="custom-banner-{{ section.id }}" 
      style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
   <div class="banner-content-{{ section.id }}">
@@ -150,7 +155,7 @@
   </div>
 </div>
 
-<!-- البار السفلي -->
+<!-- 3. البار السفلي (بدون خلفية الصورة) -->
 <div class="bottom-info-bar-{{ section.id }}">
   SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL
 </div>
