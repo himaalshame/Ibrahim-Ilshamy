@@ -19,7 +19,7 @@
   <!-- Hero Banner Section -->
   <div class="hero-banner-container">
     
-    <!-- ديف منفصل تماماً للصورة لتغطي العرض والطول بالكامل -->
+
     <div class="hero-image-wrapper">
       {% if section.settings.bg_image != blank %}
   <img 
@@ -33,7 +33,7 @@
   {% endif %}
     </div>
 
-    <!-- المحتوى النصي فوق الصورة -->
+
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
       <p class="banner-description">{{ section.settings.description }}</p>
@@ -132,6 +132,7 @@
     position: relative;
     z-index: 2;
     max-width: 450px;
+    top:20px;
   }
 
   .banner-title {
