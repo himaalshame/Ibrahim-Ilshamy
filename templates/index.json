@@ -308,11 +308,65 @@
         "button_link": "",
         "bottom_ticker_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
+    },
+    "custom_grid_D3gLtG": {
+      "type": "custom-grid",
+      "blocks": {
+        "product_block_K4gdhU": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_block_w7krar": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_block_GwWwEf": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_block_CqRrAh": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_block_ebNG4q": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_block_MNkiEJ": {
+          "type": "product_block",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_block_K4gdhU",
+        "product_block_w7krar",
+        "product_block_GwWwEf",
+        "product_block_CqRrAh",
+        "product_block_ebNG4q",
+        "product_block_MNkiEJ"
+      ],
+      "name": "Custom Grid",
+      "settings": {
+        "heading": "Tisso vison in the wild"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "custom_banner_MajM44"
+    "custom_banner_MajM44",
+    "custom_grid_D3gLtG"
   ]
 }
