@@ -299,9 +299,6 @@
       overflow: visible;
       width: 100%;
       height: 100%;
-
-    background: #fff;
-
     }
     .banner-overlay-content {
       position: static;
@@ -319,8 +316,43 @@
       margin: 0 0 16px 0;
       text-align: center;
     }
-    .btn--solid {
+    .banner-description--desktop {
+      display: none;
+    }
+    .banner-description--mobile {
+      display: block;
+      font-size: 16px;
+      margin: 0 0 24px 0;
+      text-align: center;
+      max-width: 300px;
+      line-height: 1.4;
+    }
+
+    /* Floating Shop Button on Image */
+    .banner-overlay-content .btn--solid {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
       padding: 14px 32px;
+      white-space: nowrap;
+    }
+
+    /* Hero Image Container */
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: auto;
+      inset: auto;
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .hero-bg-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
   }
 
