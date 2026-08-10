@@ -249,283 +249,78 @@
   /* ==========================================================
      6. Responsive
      ========================================================== */
-      MOBILE - FINAL
-========================================= */
-
-@media (max-width: 768px) {
-
-  /* =========================
-     TOP NAVBAR
-  ========================= */
-
-  .top-navbar {
-    height: 46px;
-    padding: 0 16px;
-
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    background: #fff;
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .nav-logo a {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  /* نخفي الإعلان والزر في الموبايل */
-  .nav-message,
-  .nav-action {
-    display: none;
-  }
-
-
-  /* =========================
-     HERO
-  ========================= */
-
-  .hero-banner-container {
-
-    position: relative;
-
-    width: 100%;
-
-    /*
-      نسبة قريبة من شكل الموبايل
-    */
-    aspect-ratio: 232 / 322;
-
+  @media (max-width: 768px) {
+    .top-navbar {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px 20px;
+    }
+    .hero-banner-container {
+      aspect-ratio: 232 / 322;
+      padding: 0;
+      min-height: 320px;
+      position: relative;
+      width: 100%;
     height: auto;
-
-    min-height: 0;
-
-    padding: 0;
-
-    display: block;
-
     overflow: hidden;
 
     background: #fff;
+
+    }
+    .banner-overlay-content {
+      max-width: 100%;
+      left: 20px;
+    }
+    .banner-title {
+      font-size: 30px;
+      position: absolute;
+      left: 50%;
+    }
+    .btn--solid {
+      padding: 14px 32px;
+    }
   }
 
-
-  /* =========================
-     IMAGE
-  ========================= */
-
-  .hero-image-wrapper {
-
-    position: absolute;
-
-    left: 0;
-    top: 34%;
-
-    width: 100%;
-    height: 66%;
-
-    z-index: 1;
-
-    overflow: hidden;
-
-    margin: 0;
-  }
-
-  .hero-bg-img {
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    /*
-      الصورة تملأ الجزء الخاص بها
-    */
-    object-fit: cover;
-
-    object-position: center;
-  }
-
-
-  /* =========================
-     CONTENT CONTAINER
-  ========================= */
-
-  .banner-overlay-content {
-
-    position: absolute;
-
-    left: 0;
-    top: 15%;
-
-    width: 100%;
-    max-width: none;
-
-    z-index: 5;
-
-    margin: 0;
-
-    padding: 0;
-
-    text-align: center;
-  }
-
-
-  /* =========================
-     TITLE
-  ========================= */
-
+@media (min-width: 769px) and (max-width: 1400px) {
   .banner-title {
-
-    position: static;
-
-    width: 100%;
-
-    margin: 0 0 12px 0;
-
-    padding: 0;
-
-    font-size: 28px;
-
-    line-height: 1.05;
-
-    font-weight: 600;
-
-    text-align: center;
-
-    color: #000;
+    font-size: 48px;
   }
-
-
-  /* =========================
-     DESCRIPTION
-  ========================= */
-
+  .banner-overlay-content {
+    max-width: 40vw;
+    left: 4vw;
+    bottom: 6%;
+  }
+  .banner-title{
+    font-size: 30px;
+    line-height: 100%;
+  }
   .banner-description {
-
-    position: static;
-
-    width: 80%;
-
-    max-width: 280px;
-
-    margin: 0 auto;
-
-    padding: 0;
-
-    font-size: 11px;
-
-    line-height: 1.35;
-
+    font-size: 16px;
     text-align: center;
-
-    color: #000;
   }
-
-
-  /* Desktop description hidden */
-  .banner-description--desktop {
-    display: none;
-  }
-
-  /* Mobile description visible */
-  .banner-description--mobile {
-    display: block;
-  }
-
-
-  /* =========================
-     SHOP BUTTON
-  ========================= */
-
-  .banner-overlay-content .btn--solid {
-
-    position: absolute;
-
-    left: 50%;
-
-    /*
-      مكان الزر بالنسبة للـ content
-    */
-    top: 245px;
-
-    transform: translateX(-50%);
-
-    width: 120px;
-    height: 42px;
-
-    padding: 0 15px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    box-sizing: border-box;
-
-    font-size: 11px;
-
-    white-space: nowrap;
-
-    z-index: 10;
-  }
-
-  .btn--solid .btn-arrow svg {
-
-    width: 17px;
-    height: 17px;
-  }
-
-
-  /* =========================
-     BOTTOM TICKER
-  ========================= */
-
-  .bottom-ticker-bar {
-
-    position: relative;
-
-    width: 100%;
-
-    min-height: 40px;
-
-    padding: 7px 15px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-
-    text-align: center;
-
-    background: #fff;
-
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-
-    font-size: 7px;
-
-    line-height: 1.4;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-  }
-
-  .bottom-ticker-bar p {
-    margin: 0;
-  }
-
 }
 
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 15px 20px;
+  }
+  .hero-banner-container {
+    aspect-ratio: var(--hero-aspect-mobile);
+    padding: 30px 20px;
+    min-height: 320px;
+  }
+  .banner-overlay-content {
+    max-width: 100%;
+    left: 20px;
+  }
+  .btn--solid {
+    padding: 14px 32px;
+  }
+}
 @media (max-width: 768px) {
   .hero-banner-container {
     flex-direction: column;
