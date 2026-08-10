@@ -315,37 +315,43 @@
         "product_block_K4gdhU": {
           "type": "product_block",
           "settings": {
-            "product": "black-leather-bag"
+            "product": "black-leather-bag",
+            "plus_position": "bottom-right"
           }
         },
         "product_block_w7krar": {
           "type": "product_block",
           "settings": {
-            "product": "blue-silk-tuxedo"
+            "product": "blue-silk-tuxedo",
+            "plus_position": "top-right"
           }
         },
         "product_block_GwWwEf": {
           "type": "product_block",
           "settings": {
-            "product": "chequered-red-shirt"
+            "product": "chequered-red-shirt",
+            "plus_position": "top-right"
           }
         },
         "product_block_CqRrAh": {
           "type": "product_block",
           "settings": {
-            "product": "classic-leather-jacket"
+            "product": "classic-leather-jacket",
+            "plus_position": "top-right"
           }
         },
         "product_block_ebNG4q": {
           "type": "product_block",
           "settings": {
-            "product": "classic-varsity-top"
+            "product": "classic-varsity-top",
+            "plus_position": "top-right"
           }
         },
         "product_block_MNkiEJ": {
           "type": "product_block",
           "settings": {
-            "product": "dark-denim-top"
+            "product": "dark-denim-top",
+            "plus_position": "top-right"
           }
         }
       },
