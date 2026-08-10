@@ -6,7 +6,7 @@
       {% if product %}
         <div class="custom-grid__item" data-product-handle="{{ product.handle }}">
           <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" loading="lazy">
-          <button class="custom-grid__plus" data-open-popup aria-label="Quick view {{ product.title }}">+</button>
+          <button class="custom-grid__plus custom-grid__plus--{{ block.settings.plus_position }}" data-open-popup aria-label="Quick view {{ product.title }}">+</button>
         </div>
       {% endif %}
     {% endfor %}
@@ -82,6 +82,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* NEW: per-block plus icon positions */
+.custom-grid__plus--top-left {
+  top: 10%;
+  left: 8%;
+  right: auto;
+}
+.custom-grid__plus--top-right {
+  top: 10%;
+  right: 8%;
+}
+.custom-grid__plus--bottom-left {
+  top: auto;
+  bottom: 10%;
+  left: 8%;
+  right: auto;
+}
+.custom-grid__plus--bottom-right {
+  top: auto;
+  bottom: 10%;
+  right: 8%;
 }
 
 @media (max-width: 749px) {
@@ -326,6 +348,18 @@ document.addEventListener('DOMContentLoaded', function () {
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "select",
+          "id": "plus_position",
+          "label": "Plus icon position",
+          "options": [
+            { "value": "top-left", "label": "Top left" },
+            { "value": "top-right", "label": "Top right" },
+            { "value": "bottom-left", "label": "Bottom left" },
+            { "value": "bottom-right", "label": "Bottom right" }
+          ],
+          "default": "top-right"
         }
       ]
     }
