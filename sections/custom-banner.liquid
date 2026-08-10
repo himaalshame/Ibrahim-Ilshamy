@@ -144,8 +144,12 @@
 
   <div class="bottom-ticker-bar">
 
-    <p>
+    <p class="bottom-ticker-text--desktop">
       {{ section.settings.bottom_ticker_text }}
+    </p>
+
+    <p class="bottom-ticker-text--mobile">
+      {{ section.settings.bottom_ticker_mobile }}
     </p>
 
   </div>
@@ -895,6 +899,22 @@
 
   }
 
+  .bottom-ticker-text--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .bottom-ticker-text--desktop {
+    display: none;
+  }
+
+  .bottom-ticker-text--mobile {
+    display: block;
+  }
+
+}
+
 
   /* ==========================================================
      SMALL MOBILE
@@ -1035,7 +1055,13 @@
       "id": "mobile_description",
       "label": "Description Text (Mobile)",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
-    }
+    },
+    {
+  "type": "text",
+  "id": "bottom_ticker_mobile",
+  "label": "Bottom Ticker Text (Mobile)",
+  "default": "SHOP THE GIFT GUIDE"
+},
 
   ],
 
