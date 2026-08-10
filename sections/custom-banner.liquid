@@ -40,7 +40,8 @@
 
     <div class="banner-overlay-content">
       <h1 class="banner-title">{{ section.settings.heading }}</h1>
-      <p class="banner-description">{{ section.settings.description | replace: '//', '<br>' }}</p>
+      <p class="banner-description banner-description--desktop">{{ section.settings.description | replace: '//', '<br>' }}</p>
+      <p class="banner-description banner-description--mobile">{{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}</p> 
       <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--solid">
         <span>{{ section.settings.button_text }}</span>
         <span class="btn-arrow">
@@ -218,6 +219,18 @@
     line-height: 140%;
     margin: 0 0 3vw;
   }
+  .banner-description--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .banner-description--desktop {
+    display: none;
+  }
+  .banner-description--mobile {
+    display: block;
+  }
+}
 
   /* ==========================================================
      5. Bottom Ticker Bar
@@ -402,6 +415,12 @@
       "id": "bottom_ticker_text",
       "label": "Bottom Ticker Text",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description",
+      "label": "Description Text (Mobile)",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     }
   ],
   "presets": [
