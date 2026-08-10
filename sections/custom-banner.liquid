@@ -57,6 +57,8 @@
   {%- comment -%} ================= Bottom Ticker Bar ================= {%- endcomment -%}
   <div class="bottom-ticker-bar">
     <p>{{ section.settings.bottom_ticker_text }}</p>
+    <p class="bottom_ticker_text bottom_ticker_text--desktop">{{ section.settings.bottom_ticker_text | replace: '//', '<br>' }}</p>
+    <p class="bottom_ticker_text bottom_ticker_text--mobile">{{ section.settings.mobile_bottom_ticker_text | default: section.settings.bottom_ticker_text | replace: '//', '<br>' }}</p>
   </div>
 </div>
 
@@ -249,9 +251,19 @@
     color: var(--color-text);
   }
 
-  .button_text{
-    opacity:0.8 ;
+
+  .bottom-ticker-bar--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .bottom-ticker-bar--desktop {
+    display: none;
   }
+  .bottom-ticker-bar--mobile {
+    display: block;
+  }
+}
 
   /* ==========================================================
      6. Responsive
@@ -421,6 +433,12 @@
       "id": "mobile_description",
       "label": "Description Text (Mobile)",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+       "type": "textarea",
+       "id": "mobile_bottom_ticker_text",
+       "label": "bottom_ticker_text Text (Mobile)",
+       "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
     }
   ],
   "presets": [
