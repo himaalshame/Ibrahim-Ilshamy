@@ -1,6 +1,8 @@
 <div class="custom-banner-wrapper">
 
-  <!-- ================= TOP NAVBAR ================= -->
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
 
   <div class="top-navbar">
 
@@ -54,11 +56,33 @@
   </div>
 
 
-  <!-- ================= HERO ================= -->
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
   <div class="hero-banner-container">
 
-    <!-- BACKGROUND IMAGE -->
+    <!-- HERO TEXT -->
+    <div class="banner-overlay-content">
+
+      <h1 class="banner-title">
+        {{ section.settings.heading }}
+      </h1>
+
+      <p class="banner-description banner-description--desktop">
+        {{ section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+      <p class="banner-description banner-description--mobile">
+        {{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         IMAGE
+    ==================================================== -->
 
     <div class="hero-image-wrapper">
 
@@ -74,31 +98,6 @@
         >
 
       {% endif %}
-
-    </div>
-
-
-    <!-- HERO CONTENT -->
-
-    <div class="banner-overlay-content">
-
-      <h1 class="banner-title">
-        {{ section.settings.heading }}
-      </h1>
-
-
-      <!-- DESKTOP DESCRIPTION -->
-
-      <p class="banner-description banner-description--desktop">
-        {{ section.settings.description | replace: '//', '<br>' }}
-      </p>
-
-
-      <!-- MOBILE DESCRIPTION -->
-
-      <p class="banner-description banner-description--mobile">
-        {{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}
-      </p>
 
 
       <!-- SHOP BUTTON -->
@@ -139,7 +138,9 @@
   </div>
 
 
-  <!-- ================= BOTTOM TICKER ================= -->
+  <!-- =====================================================
+       BOTTOM TICKER
+  ====================================================== -->
 
   <div class="bottom-ticker-bar">
 
@@ -162,21 +163,17 @@
 
 
   /* ==========================================================
-     VARIABLES
+     MAIN
   ========================================================== */
 
   .custom-banner-wrapper {
 
     --font-main: 'Jost', sans-serif;
 
-    --color-text: #000000;
-    --color-bg: #ffffff;
-    --color-bg-soft: #f5f5f5;
-    --color-border: #e5e5e5;
-
-    --color-btn-bg: #000000;
-    --color-btn-text: #ffffff;
-    --color-btn-hover: #222222;
+    --black: #000000;
+    --white: #ffffff;
+    --soft-bg: #f5f5f5;
+    --border: #e5e5e5;
 
     width: 100%;
 
@@ -184,10 +181,9 @@
 
     font-family: var(--font-main);
 
-    color: var(--color-text);
+    color: var(--black);
 
     overflow: hidden;
-
   }
 
 
@@ -198,29 +194,23 @@
   .custom-banner-wrapper *,
   .custom-banner-wrapper *::before,
   .custom-banner-wrapper *::after {
-
     box-sizing: border-box;
+  }
 
+
+  .custom-banner-wrapper h1,
+  .custom-banner-wrapper p {
+    margin-top: 0;
   }
 
 
   .custom-banner-wrapper a {
-
     text-decoration: none;
-
-  }
-
-
-  .custom-banner-wrapper p,
-  .custom-banner-wrapper h1 {
-
-    margin-top: 0;
-
   }
 
 
   /* ==========================================================
-     BUTTON
+     BUTTON GENERAL
   ========================================================== */
 
   .btn {
@@ -233,12 +223,13 @@
 
     gap: 10px;
 
+    font-family: var(--font-main);
+
     text-decoration: none;
 
     line-height: 1;
 
-    font-family: var(--font-main);
-
+    cursor: pointer;
   }
 
 
@@ -251,58 +242,40 @@
     justify-content: center;
 
     transition: transform 0.3s ease;
-
   }
 
 
   .btn-arrow svg {
 
-    display: block;
+    width: 20px;
 
+    height: 20px;
+
+    display: block;
   }
 
 
   .btn:hover .btn-arrow {
 
     transform: translateX(5px);
-
   }
 
 
   /* ==========================================================
-     NAVBAR BUTTON
+     NAV BUTTON
   ========================================================== */
 
   .btn--pill {
 
-    background-color: #f7e252;
+    background: #f7e252;
 
-    color: #000000;
+    color: #000;
 
     padding: 17px 30px;
 
     font-size: 16px;
 
     border-radius: 2px;
-
-    transition: background-color 0.2s ease;
-
-  }
-
-
-  .btn--pill:hover {
-
-    background-color: #e2ce3d;
-
-  }
-
-
-  .btn--pill .btn-arrow svg {
-
-    width: 20px;
-
-    height: 20px;
-
   }
 
 
@@ -312,41 +285,39 @@
 
   .btn--solid {
 
-    background-color: var(--color-btn-bg);
+    position: absolute;
 
-    color: var(--color-btn-text);
+    z-index: 10;
+
+    background: #000000;
+
+    color: #ffffff;
 
     padding: 18px 30px;
 
-    font-size: 15px;
-
     min-width: 175px;
 
-    transition:
-      background-color 0.3s ease,
-      transform 0.3s ease;
+    font-size: 15px;
 
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    white-space: nowrap;
   }
 
 
   .btn--solid:hover {
 
-    background-color: var(--color-btn-hover);
-
-  }
-
-
-  .btn--solid .btn-arrow svg {
-
-    width: 20px;
-
-    height: 20px;
+    background: #222222;
 
   }
 
 
   /* ==========================================================
-     TOP NAVBAR
+     NAVBAR
   ========================================================== */
 
   .top-navbar {
@@ -363,18 +334,15 @@
 
     padding: 15px 40px;
 
-    background-color: var(--color-bg-soft);
+    background: var(--soft-bg);
 
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border);
 
     position: relative;
 
     z-index: 20;
-
   }
 
-
-  /* LOGO */
 
   .nav-logo a {
 
@@ -387,56 +355,37 @@
     letter-spacing: 1px;
 
     text-transform: uppercase;
-
   }
 
-
-  /* NAV MESSAGE */
 
   .nav-message {
 
     font-size: 16px;
 
     color: #333333;
-
   }
 
-
-  /* MOBILE MENU */
 
   .mobile-menu-btn {
 
     display: none;
 
-    align-items: center;
+    border: none;
 
-    justify-content: center;
+    background: transparent;
 
-    width: 30px;
-
-    height: 30px;
+    color: #000000;
 
     padding: 0;
 
     margin: 0;
 
-    background: transparent;
-
-    border: none;
-
-    color: #000000;
-
-    font-size: 22px;
-
-    line-height: 1;
-
     cursor: pointer;
-
   }
 
 
   /* ==========================================================
-     HERO CONTAINER
+     HERO DESKTOP
   ========================================================== */
 
   .hero-banner-container {
@@ -449,13 +398,12 @@
 
     overflow: hidden;
 
-    background-color: #ffffff;
-
+    background: #ffffff;
   }
 
 
   /* ==========================================================
-     HERO IMAGE
+     IMAGE
   ========================================================== */
 
   .hero-image-wrapper {
@@ -468,10 +416,9 @@
 
     height: 100%;
 
-    z-index: 1;
-
     overflow: hidden;
 
+    z-index: 1;
   }
 
 
@@ -484,12 +431,11 @@
     height: 100%;
 
     object-fit: fill;
-
   }
 
 
   /* ==========================================================
-     HERO CONTENT
+     HERO TEXT DESKTOP
   ========================================================== */
 
   .banner-overlay-content {
@@ -505,17 +451,8 @@
     width: 35vw;
 
     max-width: 500px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
   }
 
-
-  /* TITLE */
 
   .banner-title {
 
@@ -528,11 +465,8 @@
     line-height: 1;
 
     color: #000000;
-
   }
 
-
-  /* DESCRIPTION */
 
   .banner-description {
 
@@ -540,19 +474,17 @@
 
     font-size: 20px;
 
-    font-weight: 400;
-
     line-height: 1.4;
 
-    color: #000000;
+    font-weight: 400;
 
+    color: #000000;
   }
 
 
   .banner-description--mobile {
 
     display: none;
-
   }
 
 
@@ -564,13 +496,11 @@
 
     position: relative;
 
-    z-index: 10;
+    z-index: 20;
 
     width: 100%;
 
-    padding: 8px 30px;
-
-    background-color: var(--color-bg-soft);
+    background: var(--soft-bg);
 
     border-top: 1px solid #eeeeee;
 
@@ -578,6 +508,7 @@
 
     text-align: center;
 
+    padding: 8px 20px;
   }
 
 
@@ -594,12 +525,11 @@
     text-transform: uppercase;
 
     color: #000000;
-
   }
 
 
   /* ==========================================================
-     TABLET / SMALL DESKTOP
+     TABLET
   ========================================================== */
 
   @media (min-width: 769px) and (max-width: 1400px) {
@@ -607,14 +537,12 @@
     .top-navbar {
 
       padding: 15px 30px;
-
     }
 
 
     .nav-logo a {
 
       font-size: 22px;
-
     }
 
 
@@ -627,7 +555,6 @@
       width: 40vw;
 
       max-width: 450px;
-
     }
 
 
@@ -636,31 +563,23 @@
       font-size: 42px;
 
       line-height: 1.05;
-
-      margin-bottom: 15px;
-
     }
 
 
     .banner-description {
 
       font-size: 16px;
-
-      line-height: 1.4;
-
-      margin-bottom: 20px;
-
     }
 
 
     .btn--solid {
 
-      padding: 16px 28px;
+      min-width: 160px;
+
+      padding: 16px 25px;
 
       font-size: 14px;
-
     }
-
   }
 
 
@@ -670,13 +589,12 @@
 
   @media (max-width: 768px) {
 
-    /* --------------------------------------------------------
+
+    /* ========================================================
        NAVBAR
-    -------------------------------------------------------- */
+    ======================================================== */
 
     .top-navbar {
-
-      width: 100%;
 
       height: 62px;
 
@@ -690,14 +608,13 @@
 
       justify-content: space-between;
 
-      background-color: #f5f5f5;
+      background: #f5f5f5;
 
       border-bottom: 1px solid #e5e5e5;
 
       position: relative;
 
       z-index: 20;
-
     }
 
 
@@ -705,8 +622,17 @@
 
       display: flex;
 
-      flex-shrink: 0;
+      align-items: center;
 
+      justify-content: center;
+
+      width: 30px;
+
+      height: 30px;
+
+      font-size: 22px;
+
+      line-height: 1;
     }
 
 
@@ -721,7 +647,6 @@
       transform: translate(-50%, -50%);
 
       white-space: nowrap;
-
     }
 
 
@@ -732,7 +657,6 @@
       font-weight: 600;
 
       letter-spacing: 1px;
-
     }
 
 
@@ -740,53 +664,150 @@
     .nav-action {
 
       display: none;
-
     }
 
 
-    /* --------------------------------------------------------
+    /* ========================================================
        HERO
-    -------------------------------------------------------- */
+    ======================================================== */
 
     .hero-banner-container {
 
-      position: relative;
-
       width: 100%;
 
-      height: 560px;
+      height: auto;
 
-      min-height: 560px;
+      min-height: 0;
 
       aspect-ratio: unset;
 
-      overflow: hidden;
+      display: flex;
+
+      flex-direction: column;
+
+      position: relative;
+
+      overflow: visible;
+
+      background: #ffffff;
 
       padding: 0;
-
-      background-color: #ffffff;
-
     }
 
 
-    /* --------------------------------------------------------
-       IMAGE
-    -------------------------------------------------------- */
+    /* ========================================================
+       WHITE CONTENT AREA
+    ======================================================== */
 
-    .hero-image-wrapper {
+    .banner-overlay-content {
 
-      position: absolute;
+      position: relative;
 
-      inset: 0;
+      top: auto;
+
+      right: auto;
+
+      bottom: auto;
+
+      left: auto;
 
       width: 100%;
 
-      height: 100%;
+      max-width: none;
 
-      z-index: 1;
+      padding: 40px 20px 24px;
+
+      margin: 0;
+
+      background: #ffffff;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      z-index: 5;
+    }
+
+
+    /* ========================================================
+       TITLE
+    ======================================================== */
+
+    .banner-title {
+
+      width: 100%;
+
+      margin: 0 0 18px;
+
+      font-size: 30px;
+
+      font-weight: 600;
+
+      line-height: 1.1;
+
+      color: #000000;
+
+      text-align: center;
+    }
+
+
+    /* ========================================================
+       DESCRIPTION
+    ======================================================== */
+
+    .banner-description--desktop {
+
+      display: none;
+    }
+
+
+    .banner-description--mobile {
+
+      display: block;
+
+      width: 100%;
+
+      max-width: 330px;
+
+      margin: 0;
+
+      font-size: 15px;
+
+      font-weight: 400;
+
+      line-height: 1.4;
+
+      color: #000000;
+
+      text-align: center;
+    }
+
+
+    /* ========================================================
+       IMAGE
+    ======================================================== */
+
+    .hero-image-wrapper {
+
+      position: relative;
+
+      inset: auto;
+
+      width: 100%;
+
+      height: 390px;
 
       overflow: hidden;
 
+      background: #ffffff;
+
+      z-index: 1;
     }
 
 
@@ -800,156 +821,56 @@
 
       object-fit: cover;
 
-      object-position: center top;
-
+      object-position: center center;
     }
 
 
-    /* --------------------------------------------------------
-       CONTENT
-    -------------------------------------------------------- */
+    /* ========================================================
+       SHOP NOW BUTTON
+       فوق الصورة من تحت
+    ======================================================== */
 
-    .banner-overlay-content {
+    .hero-image-wrapper .btn--solid {
 
       position: absolute;
 
-      left: 0;
+      left: 50%;
 
-      right: 0;
+      bottom: 28px;
 
-      bottom: 22px;
-
-      width: 100%;
-
-      max-width: none;
-
-      padding: 0 20px;
-
-      margin: 0;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      justify-content: flex-end;
-
-      text-align: center;
-
-      z-index: 5;
-
-    }
-
-
-    /* --------------------------------------------------------
-       TITLE
-    -------------------------------------------------------- */
-
-    .banner-title {
-
-      width: 100%;
-
-      max-width: 330px;
-
-      margin: 0 0 12px;
-
-      font-size: 30px;
-
-      font-weight: 600;
-
-      line-height: 1.05;
-
-      color: #000000;
-
-      text-align: center;
-
-    }
-
-
-    /* --------------------------------------------------------
-       DESCRIPTION
-    -------------------------------------------------------- */
-
-    .banner-description--desktop {
-
-      display: none;
-
-    }
-
-
-    .banner-description--mobile {
-
-      display: block;
-
-      width: 100%;
-
-      max-width: 330px;
-
-      margin: 0 0 18px;
-
-      font-size: 15px;
-
-      font-weight: 400;
-
-      line-height: 1.4;
-
-      color: #000000;
-
-      text-align: center;
-
-    }
-
-
-    /* --------------------------------------------------------
-       SHOP NOW BUTTON
-    -------------------------------------------------------- */
-
-    .banner-overlay-content .btn--solid {
-
-      position: relative;
-
-      left: auto;
-
-      bottom: auto;
-
-      transform: none;
-
-      min-width: 175px;
-
-      padding: 14px 28px;
-
-      font-size: 14px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
+      transform: translateX(-50%);
 
       z-index: 10;
 
+      min-width: 175px;
+
+      padding: 15px 28px;
+
+      font-size: 14px;
+
+      background: #000000;
+
+      color: #ffffff;
     }
 
 
-    .banner-overlay-content .btn--solid:hover {
+    .hero-image-wrapper .btn--solid:hover {
 
-      transform: none;
-
+      transform: translateX(-50%);
     }
 
 
-    /* --------------------------------------------------------
+    /* ========================================================
        TICKER
-    -------------------------------------------------------- */
+    ======================================================== */
 
     .bottom-ticker-bar {
 
       width: 100%;
 
-      padding: 8px 15px;
-
       min-height: 38px;
+
+      padding: 8px 12px;
 
       display: flex;
 
@@ -957,6 +878,7 @@
 
       justify-content: center;
 
+      background: #f5f5f5;
     }
 
 
@@ -969,14 +891,13 @@
       letter-spacing: 1px;
 
       text-align: center;
-
     }
 
   }
 
 
   /* ==========================================================
-     VERY SMALL MOBILE
+     SMALL MOBILE
   ========================================================== */
 
   @media (max-width: 380px) {
@@ -984,34 +905,20 @@
     .nav-logo a {
 
       font-size: 19px;
-
-    }
-
-
-    .hero-banner-container {
-
-      height: 520px;
-
-      min-height: 520px;
-
     }
 
 
     .banner-overlay-content {
 
-      bottom: 20px;
-
-      padding: 0 15px;
-
+      padding: 35px 15px 22px;
     }
 
 
     .banner-title {
 
-      font-size: 27px;
+      font-size: 28px;
 
-      max-width: 300px;
-
+      margin-bottom: 16px;
     }
 
 
@@ -1019,24 +926,29 @@
 
       font-size: 14px;
 
-      max-width: 290px;
-
+      max-width: 300px;
     }
 
 
-    .banner-overlay-content .btn--solid {
+    .hero-image-wrapper {
 
-      min-width: 160px;
+      height: 350px;
+    }
 
-      padding: 13px 24px;
 
+    .hero-image-wrapper .btn--solid {
+
+      min-width: 165px;
+
+      padding: 14px 24px;
+
+      bottom: 25px;
     }
 
 
     .bottom-ticker-bar p {
 
       font-size: 8px;
-
     }
 
   }
@@ -1115,7 +1027,7 @@
       "type": "text",
       "id": "bottom_ticker_text",
       "label": "Bottom Ticker Text",
-      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
     },
 
     {
