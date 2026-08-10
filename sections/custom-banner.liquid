@@ -76,6 +76,32 @@
       <p class="banner-description banner-description--mobile">
         {{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}
       </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         IMAGE
+    ==================================================== -->
+
+    <div class="hero-image-wrapper">
+
+      {% if section.settings.bg_image != blank %}
+
+        <img
+          src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+          alt="{{ section.settings.heading | escape }}"
+          class="hero-bg-img"
+          loading="eager"
+          width="{{ section.settings.bg_image.width }}"
+          height="{{ section.settings.bg_image.height }}"
+        >
+
+      {% endif %}
+
+
+      <!-- SHOP BUTTON -->
+
       <a
         href="{{ section.settings.button_link | default: '#' }}"
         class="btn btn--solid"
@@ -106,33 +132,6 @@
         </span>
 
       </a>
-
-    </div>
-
-
-    <!-- ===================================================
-         IMAGE
-    ==================================================== -->
-
-    <div class="hero-image-wrapper">
-
-      {% if section.settings.bg_image != blank %}
-
-        <img
-          src="{{ section.settings.bg_image | image_url: width: 2000 }}"
-          alt="{{ section.settings.heading | escape }}"
-          class="hero-bg-img"
-          loading="eager"
-          width="{{ section.settings.bg_image.width }}"
-          height="{{ section.settings.bg_image.height }}"
-        >
-
-      {% endif %}
-
-
-      <!-- SHOP BUTTON -->
-
-      
 
     </div>
 
@@ -912,7 +911,7 @@
 
   .bottom-ticker-text--mobile {
     display: block;
-
+    
   }
 
 }
