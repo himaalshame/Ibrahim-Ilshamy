@@ -1,35 +1,69 @@
 <div class="custom-banner-wrapper">
 
-  {%- comment -%} ================= Top Navbar / Announcement Bar ================= {%- endcomment -%}
+  <!-- ================= TOP NAVBAR ================= -->
+
   <div class="top-navbar">
-    <button class="mobile-menu-btn" type="button" aria-label="Open menu">
+
+    <button
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="Open menu"
+    >
       ☰
     </button>
+
     <div class="nav-logo">
-      <a href="#">{{ section.settings.logo_text }}</a>
+      <a href="#">
+        {{ section.settings.logo_text }}
+      </a>
     </div>
 
     <div class="nav-message">
-      <span>{{ section.settings.top_message }}</span>
+      <span>
+        {{ section.settings.top_message }}
+      </span>
     </div>
 
     <div class="nav-action">
-      <a href="{{ section.settings.top_btn_link | default: '#' }}" class="btn btn--pill">
-        <span>{{ section.settings.top_btn_text }}</span>
+      <a
+        href="{{ section.settings.top_btn_link | default: '#' }}"
+        class="btn btn--pill"
+      >
+        <span>
+          {{ section.settings.top_btn_text }}
+        </span>
+
         <span class="btn-arrow">
-          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2 8H14M14 8L9 3M14 8L9 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
         </span>
       </a>
     </div>
+
   </div>
 
-  {%- comment -%} ================= Hero Banner Section ================= {%- endcomment -%}
+
+  <!-- ================= HERO ================= -->
+
   <div class="hero-banner-container">
 
+    <!-- BACKGROUND IMAGE -->
+
     <div class="hero-image-wrapper">
-      {%- if section.settings.bg_image != blank -%}
+
+      {% if section.settings.bg_image != blank %}
+
         <img
           src="{{ section.settings.bg_image | image_url: width: 2000 }}"
           alt="{{ section.settings.heading | escape }}"
@@ -38,419 +72,1067 @@
           width="{{ section.settings.bg_image.width }}"
           height="{{ section.settings.bg_image.height }}"
         >
-      {%- endif -%}
+
+      {% endif %}
+
     </div>
+
+
+    <!-- HERO CONTENT -->
 
     <div class="banner-overlay-content">
-      <h1 class="banner-title">{{ section.settings.heading }}</h1>
-      <p class="banner-description banner-description--desktop">{{ section.settings.description | replace: '//', '<br>' }}</p>
-      <p class="banner-description banner-description--mobile">{{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}</p> 
-      <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--solid">
-        <span>{{ section.settings.button_text }}</span>
-        <span class="btn-arrow">
-          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+
+      <h1 class="banner-title">
+        {{ section.settings.heading }}
+      </h1>
+
+
+      <!-- DESKTOP DESCRIPTION -->
+
+      <p class="banner-description banner-description--desktop">
+        {{ section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+
+      <!-- MOBILE DESCRIPTION -->
+
+      <p class="banner-description banner-description--mobile">
+        {{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+
+      <!-- SHOP BUTTON -->
+
+      <a
+        href="{{ section.settings.button_link | default: '#' }}"
+        class="btn btn--solid"
+      >
+
+        <span>
+          {{ section.settings.button_text }}
         </span>
+
+        <span class="btn-arrow">
+
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+
+            <path
+              d="M2 8H14M14 8L9 3M14 8L9 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </span>
+
       </a>
+
     </div>
 
   </div>
 
-  {%- comment -%} ================= Bottom Ticker Bar ================= {%- endcomment -%}
+
+  <!-- ================= BOTTOM TICKER ================= -->
+
   <div class="bottom-ticker-bar">
-    <p>{{ section.settings.bottom_ticker_text }}</p>
+
+    <p>
+      {{ section.settings.bottom_ticker_text }}
+    </p>
+
   </div>
+
 </div>
 
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
 
   /* ==========================================================
-     1. Design Tokens
-     ========================================================== */
+     FONT
+  ========================================================== */
+
+  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+
+
+  /* ==========================================================
+     VARIABLES
+  ========================================================== */
+
   .custom-banner-wrapper {
+
     --font-main: 'Jost', sans-serif;
 
     --color-text: #000000;
     --color-bg: #ffffff;
     --color-bg-soft: #f5f5f5;
     --color-border: #e5e5e5;
-    --color-accent: #f7e252;
-    --color-accent-hover: #e2ce3d;
+
     --color-btn-bg: #000000;
-    --color-btn-bg-hover: #222222;
     --color-btn-text: #ffffff;
-
-    --hero-padding: 4vw 6vw;
-    --hero-aspect-desktop: 16 / 7;
-    --hero-aspect-mobile: 4 / 3;
-    --content-max-width: 35vw;
-    --content-inset: 6vw;
-
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.3s ease;
+    --color-btn-hover: #222222;
 
     width: 100%;
+
     position: relative;
+
     font-family: var(--font-main);
+
+    color: var(--color-text);
+
+    overflow: hidden;
+
   }
 
+
   /* ==========================================================
-     2. Shared Button Component (used in navbar + hero)
-     ========================================================== */
-  .btn {
-    font-family: var(--font-main);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+     RESET
+  ========================================================== */
+
+  .custom-banner-wrapper *,
+  .custom-banner-wrapper *::before,
+  .custom-banner-wrapper *::after {
+
+    box-sizing: border-box;
+
+  }
+
+
+  .custom-banner-wrapper a {
+
     text-decoration: none;
-    line-height: 1;
+
   }
-  .btn-arrow {
+
+
+  .custom-banner-wrapper p,
+  .custom-banner-wrapper h1 {
+
+    margin-top: 0;
+
+  }
+
+
+  /* ==========================================================
+     BUTTON
+  ========================================================== */
+
+  .btn {
+
     display: inline-flex;
-    color: currentColor;
-    transition: transform var(--transition-base);
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    text-decoration: none;
+
+    line-height: 1;
+
+    font-family: var(--font-main);
+
   }
+
+
+  .btn-arrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: transform 0.3s ease;
+
+  }
+
+
+  .btn-arrow svg {
+
+    display: block;
+
+  }
+
+
   .btn:hover .btn-arrow {
+
     transform: translateX(5px);
+
   }
+
+
+  /* ==========================================================
+     NAVBAR BUTTON
+  ========================================================== */
 
   .btn--pill {
-    background-color: var(--color-accent);
-    color: var(--color-text);
+
+    background-color: #f7e252;
+
+    color: #000000;
+
     padding: 17px 30px;
+
     font-size: 16px;
+
     border-radius: 2px;
-    transition: background-color var(--transition-fast);
+
+    transition: background-color 0.2s ease;
+
   }
+
+
   .btn--pill:hover {
-    background-color: var(--color-accent-hover);
+
+    background-color: #e2ce3d;
+
   }
+
+
   .btn--pill .btn-arrow svg {
+
     width: 20px;
+
     height: 20px;
+
   }
+
+
+  /* ==========================================================
+     HERO BUTTON
+  ========================================================== */
 
   .btn--solid {
+
     background-color: var(--color-btn-bg);
+
     color: var(--color-btn-text);
-    padding: 20px 60px;
-    font-size: 16px;
-    transition: background-color var(--transition-base);
-    gap: 10px;
+
+    padding: 18px 30px;
+
+    font-size: 15px;
+
+    min-width: 175px;
+
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+
   }
+
+
   .btn--solid:hover {
-    background-color: var(--color-btn-bg-hover);
+
+    background-color: var(--color-btn-hover);
+
   }
+
+
   .btn--solid .btn-arrow svg {
+
     width: 20px;
+
+    height: 20px;
+
   }
 
+
   /* ==========================================================
-     3. Top Navbar
-     ========================================================== */
+     TOP NAVBAR
+  ========================================================== */
+
   .top-navbar {
+
+    width: 100%;
+
+    min-height: 70px;
+
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
-    padding: 20px 40px;
+
+    justify-content: space-between;
+
+    padding: 15px 40px;
+
     background-color: var(--color-bg-soft);
+
     border-bottom: 1px solid var(--color-border);
+
     position: relative;
-    z-index: 10;
+
+    z-index: 20;
+
   }
-  .mobile-menu-btn{
-  display:none;
-}
+
+
+  /* LOGO */
+
   .nav-logo a {
+
+    color: #000000;
+
     font-size: 24px;
+
     font-weight: 600;
-    color: var(--color-text);
-    text-decoration: none;
+
     letter-spacing: 1px;
+
     text-transform: uppercase;
+
   }
+
+
+  /* NAV MESSAGE */
+
   .nav-message {
+
     font-size: 16px;
+
     color: #333333;
+
   }
 
-  /* ==========================================================
-     4. Hero Section
-     ========================================================== */
-  .hero-banner-container {
-    position: relative;
-    max-width: 100%;
-    aspect-ratio: var(--hero-aspect-desktop);
-    display: flex;
-    align-items: center;
-    padding: var(--hero-padding);
-    box-sizing: border-box;
-    overflow: hidden;
-    background-color: var(--color-bg);
-  }
 
-  .hero-image-wrapper {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-bg-img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    display: block;
-  }
+  /* MOBILE MENU */
 
-  .banner-overlay-content {
-    position: absolute;
-    z-index: 2;
-    max-width: var(--content-max-width);
-    left: var(--content-inset);
-    bottom: 5%;
-  }
-  .banner-title {
-  font-size: 80px;
-  font-weight: 600;
-  color: var(--color-text);
-  line-height: 1;
-  margin-top: 20px ;
-}
-  .banner-description {
-    font-size: 25px;
-    font-weight: 400;
-    color: var(--color-text);
-    line-height: 140%;
-    margin: 0 0 3vw;
-  }
-  .banner-description--mobile {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .banner-description--desktop {
-    display: none;
-  }
-  .banner-description--mobile {
-    display: block;
-  }
-}
-
-  /* ==========================================================
-     5. Bottom Ticker Bar
-     ========================================================== */
-  .bottom-ticker-bar {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 8px 50px;
-    background-color: var(--color-bg-soft);
-    border-top: 1px solid #eeeeee;
-    border-bottom: 1px solid #eeeeee;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--color-text);
-  }
-
-  .button_text{
-    opacity:0.8 ;
-  }
-
-  /* ==========================================================
-     6. Responsive
-     ========================================================== */
- @media (max-width: 768px) {
-  /* 1. ضبط شريط الملاحة العلوي */
-  .top-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-  }
   .mobile-menu-btn {
-    display: flex;
-    background: none;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    padding: 0;
+
+    margin: 0;
+
+    background: transparent;
+
     border: none;
-    font-size: 20px;
-  }
-  .nav-message,
-  .nav-action {
-    display: none;
+
+    color: #000000;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
   }
 
-  /* 2. تحويل حاوية الهيرو لتترتب العناصر فيها رأسياً من الأعلى للأسفل */
+
+  /* ==========================================================
+     HERO CONTAINER
+  ========================================================== */
+
   .hero-banner-container {
-    display: flex;
-    flex-direction: column; /* يرتب العناصر عمودياً: المحتوى ثم الصورة */
-    align-items: center;
-    height: auto;
-    aspect-ratio: unset;
-    padding: 30px 20px 0;
+
     position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 7;
+
+    overflow: hidden;
+
     background-color: #ffffff;
+
   }
 
-  /* 3. إلغاء التموضع المطلق للمحتوى ليأخذ مكانه الطبيعي تحت الـ Navbar مباشرة */
-  .banner-overlay-content {
-    position: relative; /* أضف هذا */
-    left: auto;         /* أضف هذا إلغاء التموضع القديم */
-    bottom: auto;       /* أضف هذا إلغاء التموضع القديم */
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-  }
 
-  /* 4. تنسيق العنوان تحت الـ Navbar */
-  .banner-title {
-    font-size: 32px;
-    position: relative;
-    left: auto;
-    margin: 0 0 12px 0;
-    text-align: center;
-  }
+  /* ==========================================================
+     HERO IMAGE
+  ========================================================== */
 
-  /* 5. تنسيق التوصيف تحت العنوان */
-  .banner-description--desktop {
-    display: none;
-  }
-  .banner-description--mobile {
-    display: block;
-    font-size: 16px;
-    margin: 0 0 20px 0;
-    text-align: center;
-    max-width: 320px;
-    line-height: 1.4;
-  }
-
-  /* 6. ترتيب الصورة تحت التوصيف مباشرة */
   .hero-image-wrapper {
-    position: relative;
+
+    position: absolute;
+
+    inset: 0;
+
     width: 100%;
-    height: auto;
-    inset: auto;
+
+    height: 100%;
+
     z-index: 1;
+
+    overflow: hidden;
+
   }
+
 
   .hero-bg-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+
     display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+
   }
 
-  /* 7. تثبيت الزر فوق الصورة من الأسفل */
-  .banner-overlay-content .btn--solid {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    padding: 14px 32px;
-    white-space: nowrap;
-  }
-}
 
-@media (min-width: 769px) and (max-width: 1400px) {
-  .banner-title {
-    font-size: 48px;
-  }
+  /* ==========================================================
+     HERO CONTENT
+  ========================================================== */
+
   .banner-overlay-content {
-    max-width: 40vw;
-    left: 4vw;
-    bottom: 6%;
-  }
-  .banner-title{
-    font-size: 30px;
-    line-height: 100%;
-  }
-  .banner-description {
-    font-size: 16px;
-    text-align: center;
-  }
-}
 
+    position: absolute;
+
+    z-index: 5;
+
+    left: 6vw;
+
+    bottom: 7%;
+
+    width: 35vw;
+
+    max-width: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+
+  /* TITLE */
+
+  .banner-title {
+
+    margin: 0 0 18px;
+
+    font-size: 60px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    color: #000000;
+
+  }
+
+
+  /* DESCRIPTION */
+
+  .banner-description {
+
+    margin: 0 0 25px;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+
+    color: #000000;
+
+  }
+
+
+  .banner-description--mobile {
+
+    display: none;
+
+  }
+
+
+  /* ==========================================================
+     BOTTOM TICKER
+  ========================================================== */
+
+  .bottom-ticker-bar {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    padding: 8px 30px;
+
+    background-color: var(--color-bg-soft);
+
+    border-top: 1px solid #eeeeee;
+
+    border-bottom: 1px solid #eeeeee;
+
+    text-align: center;
+
+  }
+
+
+  .bottom-ticker-bar p {
+
+    margin: 0;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #000000;
+
+  }
+
+
+  /* ==========================================================
+     TABLET / SMALL DESKTOP
+  ========================================================== */
+
+  @media (min-width: 769px) and (max-width: 1400px) {
+
+    .top-navbar {
+
+      padding: 15px 30px;
+
+    }
+
+
+    .nav-logo a {
+
+      font-size: 22px;
+
+    }
+
+
+    .banner-overlay-content {
+
+      left: 4vw;
+
+      bottom: 6%;
+
+      width: 40vw;
+
+      max-width: 450px;
+
+    }
+
+
+    .banner-title {
+
+      font-size: 42px;
+
+      line-height: 1.05;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .banner-description {
+
+      font-size: 16px;
+
+      line-height: 1.4;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .btn--solid {
+
+      padding: 16px 28px;
+
+      font-size: 14px;
+
+    }
+
+  }
+
+
+  /* ==========================================================
+     MOBILE
+  ========================================================== */
+
+  @media (max-width: 768px) {
+
+    /* --------------------------------------------------------
+       NAVBAR
+    -------------------------------------------------------- */
+
+    .top-navbar {
+
+      width: 100%;
+
+      height: 62px;
+
+      min-height: 62px;
+
+      padding: 0 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      background-color: #f5f5f5;
+
+      border-bottom: 1px solid #e5e5e5;
+
+      position: relative;
+
+      z-index: 20;
+
+    }
+
+
+    .mobile-menu-btn {
+
+      display: flex;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .nav-logo {
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      white-space: nowrap;
+
+    }
+
+
+    .nav-logo a {
+
+      font-size: 21px;
+
+      font-weight: 600;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .nav-message,
+    .nav-action {
+
+      display: none;
+
+    }
+
+
+    /* --------------------------------------------------------
+       HERO
+    -------------------------------------------------------- */
+
+    .hero-banner-container {
+
+      position: relative;
+
+      width: 100%;
+
+      height: 560px;
+
+      min-height: 560px;
+
+      aspect-ratio: unset;
+
+      overflow: hidden;
+
+      padding: 0;
+
+      background-color: #ffffff;
+
+    }
+
+
+    /* --------------------------------------------------------
+       IMAGE
+    -------------------------------------------------------- */
+
+    .hero-image-wrapper {
+
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: 1;
+
+      overflow: hidden;
+
+    }
+
+
+    .hero-bg-img {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center top;
+
+    }
+
+
+    /* --------------------------------------------------------
+       CONTENT
+    -------------------------------------------------------- */
+
+    .banner-overlay-content {
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 22px;
+
+      width: 100%;
+
+      max-width: none;
+
+      padding: 0 20px;
+
+      margin: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      text-align: center;
+
+      z-index: 5;
+
+    }
+
+
+    /* --------------------------------------------------------
+       TITLE
+    -------------------------------------------------------- */
+
+    .banner-title {
+
+      width: 100%;
+
+      max-width: 330px;
+
+      margin: 0 0 12px;
+
+      font-size: 30px;
+
+      font-weight: 600;
+
+      line-height: 1.05;
+
+      color: #000000;
+
+      text-align: center;
+
+    }
+
+
+    /* --------------------------------------------------------
+       DESCRIPTION
+    -------------------------------------------------------- */
+
+    .banner-description--desktop {
+
+      display: none;
+
+    }
+
+
+    .banner-description--mobile {
+
+      display: block;
+
+      width: 100%;
+
+      max-width: 330px;
+
+      margin: 0 0 18px;
+
+      font-size: 15px;
+
+      font-weight: 400;
+
+      line-height: 1.4;
+
+      color: #000000;
+
+      text-align: center;
+
+    }
+
+
+    /* --------------------------------------------------------
+       SHOP NOW BUTTON
+    -------------------------------------------------------- */
+
+    .banner-overlay-content .btn--solid {
+
+      position: relative;
+
+      left: auto;
+
+      bottom: auto;
+
+      transform: none;
+
+      min-width: 175px;
+
+      padding: 14px 28px;
+
+      font-size: 14px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      z-index: 10;
+
+    }
+
+
+    .banner-overlay-content .btn--solid:hover {
+
+      transform: none;
+
+    }
+
+
+    /* --------------------------------------------------------
+       TICKER
+    -------------------------------------------------------- */
+
+    .bottom-ticker-bar {
+
+      width: 100%;
+
+      padding: 8px 15px;
+
+      min-height: 38px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .bottom-ticker-bar p {
+
+      font-size: 9px;
+
+      line-height: 1.4;
+
+      letter-spacing: 1px;
+
+      text-align: center;
+
+    }
+
+  }
+
+
+  /* ==========================================================
+     VERY SMALL MOBILE
+  ========================================================== */
+
+  @media (max-width: 380px) {
+
+    .nav-logo a {
+
+      font-size: 19px;
+
+    }
+
+
+    .hero-banner-container {
+
+      height: 520px;
+
+      min-height: 520px;
+
+    }
+
+
+    .banner-overlay-content {
+
+      bottom: 20px;
+
+      padding: 0 15px;
+
+    }
+
+
+    .banner-title {
+
+      font-size: 27px;
+
+      max-width: 300px;
+
+    }
+
+
+    .banner-description--mobile {
+
+      font-size: 14px;
+
+      max-width: 290px;
+
+    }
+
+
+    .banner-overlay-content .btn--solid {
+
+      min-width: 160px;
+
+      padding: 13px 24px;
+
+    }
+
+
+    .bottom-ticker-bar p {
+
+      font-size: 8px;
+
+    }
+
+  }
 
 </style>
 
+
 {% schema %}
+
 {
   "name": "Custom Banner",
+
   "settings": [
+
     {
       "type": "text",
       "id": "logo_text",
       "label": "Logo Text",
       "default": "TISSO VISON"
     },
+
     {
       "type": "text",
       "id": "top_message",
       "label": "Top Announcement Message",
       "default": "Find the ideal gift for your loved ones."
     },
+
     {
       "type": "text",
       "id": "top_btn_text",
       "label": "Top Button Text",
       "default": "CHOOSE GIFT"
     },
+
     {
       "type": "url",
       "id": "top_btn_link",
       "label": "Top Button Link"
     },
+
     {
       "type": "image_picker",
       "id": "bg_image",
       "label": "Banner Background Image"
     },
+
     {
       "type": "text",
       "id": "heading",
       "label": "Main Heading",
       "default": "The Gift Guide"
     },
+
     {
       "type": "textarea",
       "id": "description",
       "label": "Description Text",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     },
+
     {
       "type": "text",
       "id": "button_text",
       "label": "Shop Button Label",
       "default": "SHOP NOW"
     },
+
     {
       "type": "url",
       "id": "button_link",
       "label": "Shop Button Link"
     },
+
     {
       "type": "text",
       "id": "bottom_ticker_text",
       "label": "Bottom Ticker Text",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     },
+
     {
       "type": "textarea",
       "id": "mobile_description",
       "label": "Description Text (Mobile)",
       "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     }
+
   ],
+
   "presets": [
     {
       "name": "Custom Banner"
     }
   ]
+
 }
+
 {% endschema %}
