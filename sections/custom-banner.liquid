@@ -2,6 +2,9 @@
 
   {%- comment -%} ================= Top Navbar / Announcement Bar ================= {%- endcomment -%}
   <div class="top-navbar">
+    <button class="mobile-menu-btn" type="button" aria-label="Open menu">
+      ☰
+    </button>
     <div class="nav-logo">
       <a href="#">{{ section.settings.logo_text }}</a>
     </div>
@@ -157,6 +160,9 @@
     position: relative;
     z-index: 10;
   }
+  .mobile-menu-btn{
+  display:none;
+}
   .nav-logo a {
     font-size: 24px;
     font-weight: 600;
@@ -268,6 +274,9 @@
     }
     .nav-action{
     display: none;
+  }
+  .mobile-menu-btn{
+    display: flex;
   }
     
     .hero-banner-container {
