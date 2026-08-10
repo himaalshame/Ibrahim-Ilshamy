@@ -36,20 +36,21 @@
 </div>
 
 <style>
-.custom-grid { padding: 40px 0; }
+.custom-grid {
+    padding: 40px 0;
+    max-width: 88%;
+    margin: 0 auto; 
+}
 .custom-grid__heading {
   font-size: 28px;
   padding: 40px 0px;
-  max-width: 88%;
-  margin: 0 auto;
+  
 }
 .custom-grid__container {
   display: grid;
   grid-template-columns: repeat(3, 433fr);
   gap: 0px;
   justify-content: center;
-   max-width: 88%;
-  margin: 0 auto;
   
 }
 .custom-grid__item {
@@ -69,7 +70,6 @@
   position: absolute;
   top: 16px;
   left: 10px;
-  font-size: 30px;
   border-radius: 50%;
   background: #fff;
   border: none;
