@@ -1,3 +1,6 @@
+
+
+
 <div class="custom-grid">
   <h2 class="custom-grid__heading">{{ section.settings.heading }}</h2>
   <div class="custom-grid__container">
@@ -281,8 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!variant) return;
 
     var items = [{ id: variant.id, quantity: 1 }];
-
-    // شرط إضافة المنتج الإضافي تلقائياً
+    
     var isBlack = Object.values(selectedOptions).includes('Black');
     var isMedium = Object.values(selectedOptions).includes('Medium');
 
@@ -351,4 +353,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ]
 }
+
 {% endschema %}
