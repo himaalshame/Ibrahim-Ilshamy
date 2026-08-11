@@ -1,202 +1,1079 @@
-{% style %}
-  /* البار العلوي (مستقل تماماً) */
-  .top-announcement-bar-{{ section.id }} {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #ffffff; /* لون أبيض صريح بدون شفافية */
-    border-bottom: 2px dashed #3182ce;
-    font-size: 13px;
-    font-weight: 600;
-  }
+<div class="custom-banner-wrapper">
 
-  .announcement-center-{{ section.id }} {
-    font-weight: 400;
-    color: #4a5568;
-  }
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
 
-  .announcement-btn-{{ section.id }} {
-    background-color: #f6e05e;
-    color: #000000;
-    padding: 8px 18px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
+  <div class="top-navbar">
 
-  /* السكشن الرئيسي للهيرو (الصورة مطبقة هنا فقط) */
-  .custom-banner-{{ section.id }} {
-    position: relative;
-    z-index: 1;
+    <button
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+    <div class="nav-logo">
+      <a href="#">
+        {{ section.settings.logo_text }}
+      </a>
+    </div>
+
+    <div class="nav-message">
+      <span>
+        {{ section.settings.top_message }}
+      </span>
+    </div>
+
+    <div class="nav-action">
+      <a
+        href="{{ section.settings.top_btn_link | default: '#' }}"
+        class="btn btn--pill"
+      >
+        <span>
+          {{ section.settings.top_btn_text }}
+        </span>
+
+        <span class="btn-arrow">
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2 8H14M14 8L9 3M14 8L9 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <div class="hero-banner-container">
+
+    <!-- HERO TEXT -->
+    <div class="banner-overlay-content">
+
+      <h1 class="banner-title">
+        {{ section.settings.heading }}
+      </h1>
+
+      <p class="banner-description banner-description--desktop">
+        {{ section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+      <p class="banner-description banner-description--mobile">
+        {{ section.settings.mobile_description | default: section.settings.description | replace: '//', '<br>' }}
+      </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         IMAGE
+    ==================================================== -->
+
+    <div class="hero-image-wrapper">
+
+      {% if section.settings.bg_image != blank %}
+
+        <img
+          src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+          alt="{{ section.settings.heading | escape }}"
+          class="hero-bg-img"
+          loading="eager"
+          width="{{ section.settings.bg_image.width }}"
+          height="{{ section.settings.bg_image.height }}"
+        >
+
+      {% endif %}
+
+
+      <!-- SHOP BUTTON -->
+
+      <a
+        href="{{ section.settings.button_link | default: '#' }}"
+        class="btn btn--solid"
+      >
+
+        <span>
+          {{ section.settings.button_text }}
+        </span>
+
+        <span class="btn-arrow">
+
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+
+            <path
+              d="M2 8H14M14 8L9 3M14 8L9 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       BOTTOM TICKER
+  ====================================================== -->
+
+  <div class="bottom-ticker-bar">
+
+    <p class="bottom-ticker-text--desktop">
+      {{ section.settings.bottom_ticker_text }}
+    </p>
+
+    <p class="bottom-ticker-text--mobile">
+      {{ section.settings.bottom_ticker_mobile }}
+    </p>
+
+  </div>
+
+</div>
+
+
+<style>
+
+  /* ==========================================================
+     FONT
+  ========================================================== */
+
+  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+
+
+  /* ==========================================================
+     MAIN
+  ========================================================== */
+
+  .custom-banner-wrapper {
+
+    --font-main: 'Jost', sans-serif;
+
+    --black: #000000;
+    --white: #ffffff;
+    --soft-bg: #f5f5f5;
+    --border: #e5e5e5;
+
     width: 100%;
-    min-height: 520px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 60px 80px;
-    box-sizing: border-box;
-    border-bottom: 2px dashed #3182ce;
-  }
 
-  .banner-content-{{ section.id }} {
-    max-width: 420px;
-    z-index: 2;
-    text-align: left;
-  }
-
-  .banner-title-{{ section.id }} {
-    font-size: 52px;
-    font-weight: 800;
-    color: #000000;
-    margin: 0 0 20px 0;
-    line-height: 1.05;
-    letter-spacing: -1px;
-  }
-
-  .banner-text-{{ section.id }} {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #2d3748;
-    margin: 0 0 35px 0;
-  }
-
-  .banner-button-{{ section.id }} {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 14px 28px;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-  }
-
-  .banner-button-{{ section.id }}:hover {
-    background-color: #333333;
-  }
-
-  /* البار السفلي (مستقل تماماً) */
-  .bottom-info-bar-{{ section.id }} {
     position: relative;
+
+    font-family: var(--font-main);
+
+    color: var(--black);
+
+    overflow: hidden;
+  }
+
+
+  /* ==========================================================
+     RESET
+  ========================================================== */
+
+  .custom-banner-wrapper *,
+  .custom-banner-wrapper *::before,
+  .custom-banner-wrapper *::after {
+    box-sizing: border-box;
+  }
+
+
+  .custom-banner-wrapper h1,
+  .custom-banner-wrapper p {
+    margin-top: 0;
+  }
+
+
+  .custom-banner-wrapper a {
+    text-decoration: none;
+  }
+
+
+  /* ==========================================================
+     BUTTON GENERAL
+  ========================================================== */
+
+  .btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    font-family: var(--font-main);
+
+    text-decoration: none;
+
+    line-height: 1;
+
+    cursor: pointer;
+  }
+
+
+  .btn-arrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: transform 0.3s ease;
+  }
+
+
+  .btn-arrow svg {
+
+    width: 20px;
+
+    height: 20px;
+
+    display: block;
+  }
+
+
+  .btn:hover .btn-arrow {
+
+    transform: translateX(5px);
+  }
+
+
+  /* ==========================================================
+     NAV BUTTON
+  ========================================================== */
+
+  .btn--pill {
+
+    background: #f7e252;
+
+    color: #000;
+
+    padding: 17px 30px;
+
+    font-size: 16px;
+
+    border-radius: 2px;
+  }
+
+
+  /* ==========================================================
+     HERO BUTTON
+  ========================================================== */
+
+  .btn--solid {
+
+    position: absolute;
+
     z-index: 10;
-    text-align: center;
-    padding: 12px;
-    background-color: #e2e8f0;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #2d3748;
+
+    background: #000000;
+
+    color: #ffffff;
+
+    padding: 18px 50px;
+
+    min-width: 175px;
+
+    font-size: 15px;
+
+    bottom: 10%;
+ 
+    left: 11.5%;
+
+    transform: translateX(-50%);
+
+    white-space: nowrap;
+  }
+
+
+  .btn--solid:hover {
+
+    background: #222222;
+
+  }
+
+
+  /* ==========================================================
+     NAVBAR
+  ========================================================== */
+
+  .top-navbar {
+
+    width: 100%;
+
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 40px;
+
+    background: var(--soft-bg);
+
+    border-bottom: 1px solid var(--border);
+
+    position: relative;
+
+    z-index: 20;
+  }
+
+
+  .nav-logo a {
+
+    color: #000000;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
     text-transform: uppercase;
   }
+
+
+  .nav-message {
+
+    font-size: 16px;
+
+    color: #333333;
+  }
+
+
+  .mobile-menu-btn {
+
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    color: #000000;
+
+    padding: 0;
+
+    margin: 0;
+
+    cursor: pointer;
+  }
+
+
+  /* ==========================================================
+     HERO DESKTOP
+  ========================================================== */
+
+  .hero-banner-container {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 7;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+
+  /* ==========================================================
+     IMAGE
+  ========================================================== */
+
+  .hero-image-wrapper {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 1;
+  }
+
+
+  .hero-bg-img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+  }
+
+
+  /* ==========================================================
+     HERO TEXT DESKTOP
+  ========================================================== */
+
+  .banner-overlay-content {
+
+    position: absolute;
+
+    z-index: 5;
+
+    left: 6vw;
+
+    bottom: 20%;
+
+    width: 35vw;
+
+    max-width: 500px;
+  }
+
+
+  .banner-title {
+
+    margin: 0 0 30px 0;
+
+    font-size: 70px;
+
+    letter-spacing: 1px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    color: #000000;
+  }
+
+
+  .banner-description {
+
+    margin: 0 0 25px;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    color: #000000;
+  }
+
+
+  .banner-description--mobile {
+
+    display: none;
+  }
+
+
+  /* ==========================================================
+     BOTTOM TICKER
+  ========================================================== */
+
+  .bottom-ticker-bar {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    background: var(--soft-bg);
+
+    border-top: 1px solid #eeeeee;
+
+    border-bottom: 1px solid #eeeeee;
+
+    text-align: center;
+
+    padding: 8px 20px;
+  }
+
+
+  .bottom-ticker-bar p {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+
+
+    text-transform: uppercase;
+
+    color: #000000;
+  }
+
+
+  /* ==========================================================
+     TABLET
+  ========================================================== */
+
+  @media (min-width: 769px) and (max-width: 1400px) {
+
+    .top-navbar {
+
+      padding: 15px 30px;
+    }
+
+
+    .nav-logo a {
+
+      font-size: 22px;
+    }
+
+
+    .banner-overlay-content {
+
+      left: 4vw;
+
+      bottom: 6%;
+
+      width: 40vw;
+
+      max-width: 450px;
+    }
+
+
+    .banner-title {
+
+      font-size: 42px;
+
+      line-height: 1.05;
+    }
+
+
+    .banner-description {
+
+      font-size: 16px;
+    }
+
+
+    .btn--solid {
+
+      min-width: 160px;
+
+      padding: 16px 25px;
+
+      font-size: 14px;
+    }
+  }
+
+
+  /* ==========================================================
+     MOBILE
+  ========================================================== */
 
   @media (max-width: 768px) {
-    .top-announcement-bar-{{ section.id }} {
+
+
+    /* ========================================================
+       NAVBAR
+    ======================================================== */
+
+    .top-navbar {
+
+      height: 62px;
+
+      min-height: 62px;
+
+      padding: 0 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      background: #f5f5f5;
+
+      border-bottom: 1px solid #e5e5e5;
+
+      position: relative;
+
+      z-index: 20;
+    }
+
+
+    .mobile-menu-btn {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 30px;
+
+      height: 30px;
+
+      font-size: 22px;
+
+      line-height: 1;
+    }
+
+
+    .nav-logo {
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      white-space: nowrap;
+    }
+
+
+    .nav-logo a {
+
+      font-size: 21px;
+
+      font-weight: 600;
+
+      letter-spacing: 1px;
+    }
+
+
+    .nav-message,
+    .nav-action {
+
+      display: none;
+    }
+
+
+    /* ========================================================
+       HERO
+    ======================================================== */
+
+    .hero-banner-container {
+
+      width: 100%;
+
+      height: auto;
+
+      min-height: 0;
+
+      aspect-ratio: unset;
+
+      display: flex;
+
       flex-direction: column;
-      gap: 10px;
+
+      position: relative;
+
+      overflow: visible;
+
+      background: #ffffff;
+
+      padding: 0;
+    }
+
+
+    /* ========================================================
+       WHITE CONTENT AREA
+    ======================================================== */
+
+    .banner-overlay-content {
+
+      position: relative;
+
+      top: auto;
+
+      right: auto;
+
+      bottom: auto;
+
+      left: auto;
+
+      width: 100%;
+
+      max-width: none;
+
+      padding: 40px 20px 24px;
+
+      margin: 0;
+
+      background: #ffffff;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
       text-align: center;
-      padding: 10px 15px;
-    }
-    
-    .custom-banner-{{ section.id }} {
-      padding: 40px 20px;
-      min-height: 380px;
+
+      z-index: 5;
     }
 
-    .banner-title-{{ section.id }} {
-      font-size: 36px;
+
+    /* ========================================================
+       TITLE
+    ======================================================== */
+
+    .banner-title {
+
+      width: 100%;
+
+      margin: 0 0 18px;
+
+      font-size: 30px;
+
+      font-weight: 600;
+
+      line-height: 1.1;
+      letter-spacing: 1.5px;
+
+      color: #000000;
+
+      text-align: center;
     }
 
-    .banner-content-{{ section.id }} {
-      max-width: 100%;
+
+    /* ========================================================
+       DESCRIPTION
+    ======================================================== */
+
+    .banner-description--desktop {
+
+      display: none;
     }
+
+
+    .banner-description--mobile {
+
+      display: block;
+
+      width: 100%;
+
+      max-width: 330px;
+
+      margin: 0;
+
+      font-size: 15px;
+
+      font-weight: 400;
+
+      line-height: 1.4;
+
+      color: #000000;
+
+      text-align: center;
+    }
+
+
+    /* ========================================================
+       IMAGE
+    ======================================================== */
+
+    .hero-image-wrapper {
+
+      position: relative;
+
+      inset: auto;
+
+      width: 100%;
+
+      height: 390px;
+
+      overflow: hidden;
+
+      background: #ffffff;
+
+      z-index: 1;
+    }
+
+
+    .hero-bg-img {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center center;
+    }
+
+
+    /* ========================================================
+       SHOP NOW BUTTON
+       فوق الصورة من تحت
+    ======================================================== */
+
+    .hero-image-wrapper .btn--solid {
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom: 28px;
+
+      transform: translateX(-50%);
+
+      z-index: 10;
+
+      min-width: 175px;
+
+      padding: 15px 28px;
+
+      font-size: 14px;
+
+      background: #000000;
+
+      color: #ffffff;
+    }
+
+
+    .hero-image-wrapper .btn--solid:hover {
+
+      transform: translateX(-50%);
+    }
+
+
+    /* ========================================================
+       TICKER
+    ======================================================== */
+
+    .bottom-ticker-bar {
+
+      width: 100%;
+
+      min-height: 38px;
+
+      padding: 8px 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: #f5f5f5;
+    }
+
+
+    .bottom-ticker-bar p {
+
+      font-size: 9px;
+
+      line-height: 1.4;
+
+      letter-spacing: 1px;
+
+      text-align: center;
+    }
+
   }
-{% endstyle %}
 
-<!-- 1. البار العلوي (بدون خلفية الصورة) -->
-<div class="top-announcement-bar-{{ section.id }}">
-  <div class="logo-text">TISSO VISON</div>
-  <div class="announcement-center-{{ section.id }}">Find the ideal gift for your loved ones.</div>
-  <a href="#" class="announcement-btn-{{ section.id }}">CHOOSE GIFT &rarr;</a>
-</div>
+  .bottom-ticker-text--mobile {
+  display: none;
+}
 
-<!-- 2. الهيرو بنر (هنا فقط تطبق خلفية الصورة) -->
-<div class="custom-banner-{{ section.id }}" 
-     style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
-  <div class="banner-content-{{ section.id }}">
-    {% if section.settings.title != blank %}
-      <h1 class="banner-title-{{ section.id }}">{{ section.settings.title }}</h1>
-    {% endif %}
+@media (max-width: 768px) {
 
-    {% if section.settings.text != blank %}
-      <p class="banner-text-{{ section.id }}">{{ section.settings.text }}</p>
-    {% endif %}
+  .bottom-ticker-text--desktop {
+    display: none;
+  }
 
-    {% if section.settings.button_label != blank %}
-      <a href="{{ section.settings.button_link }}" class="banner-button-{{ section.id }}">
-        {{ section.settings.button_label }} &rarr;
-      </a>
-    {% endif %}
-  </div>
-</div>
+  .bottom-ticker-text--mobile {
+    display: block;
+    
+  }
 
-<!-- 3. البار السفلي (بدون خلفية الصورة) -->
-<div class="bottom-info-bar-{{ section.id }}">
-  SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL
-</div>
+}
+
+
+  /* ==========================================================
+     SMALL MOBILE
+  ========================================================== */
+
+  @media (max-width: 380px) {
+
+    .nav-logo a {
+
+      font-size: 19px;
+    }
+
+
+    .banner-overlay-content {
+
+      padding: 35px 15px 22px;
+    }
+
+
+    .banner-title {
+
+      font-size: 28px;
+
+      margin-bottom: 16px;
+    }
+
+
+    .banner-description--mobile {
+
+      font-size: 14px;
+
+      max-width: 300px;
+    }
+
+
+    .hero-image-wrapper {
+
+      height: 350px;
+    }
+
+
+    .hero-image-wrapper .btn--solid {
+
+      min-width: 165px;
+
+      padding: 14px 24px;
+
+      bottom: 25px;
+    }
+
+
+    .bottom-ticker-bar p {
+
+      font-size: 8px;
+    }
+
+  }
+
+</style>
+
 
 {% schema %}
+
 {
-  "name": "Custom Banner Full",
+  "name": "Custom Banner",
+
   "settings": [
+
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "TISSO VISON"
+    },
+
+    {
+      "type": "text",
+      "id": "top_message",
+      "label": "Top Announcement Message",
+      "default": "Find the ideal gift for your loved ones."
+    },
+
+    {
+      "type": "text",
+      "id": "top_btn_text",
+      "label": "Top Button Text",
+      "default": "CHOOSE GIFT"
+    },
+
+    {
+      "type": "url",
+      "id": "top_btn_link",
+      "label": "Top Button Link"
+    },
+
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background Image"
+      "label": "Banner Background Image"
     },
+
     {
       "type": "text",
-      "id": "title",
-      "label": "Heading",
+      "id": "heading",
+      "label": "Main Heading",
       "default": "The Gift Guide"
     },
+
     {
       "type": "textarea",
-      "id": "text",
-      "label": "Subheading",
-      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+      "id": "description",
+      "label": "Description Text",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
     },
+
     {
       "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
+      "id": "button_text",
+      "label": "Shop Button Label",
       "default": "SHOP NOW"
     },
+
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button Link"
-    }
+      "label": "Shop Button Link"
+    },
+
+    {
+      "type": "text",
+      "id": "bottom_ticker_text",
+      "label": "Bottom Ticker Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+    },
+
+    {
+      "type": "textarea",
+      "id": "mobile_description",
+      "label": "Description Text (Mobile)",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+  "type": "text",
+  "id": "bottom_ticker_mobile",
+  "label": "Bottom Ticker Text (Mobile)",
+  "default": "SHOP THE GIFT GUIDE"
+},
+
   ],
+
   "presets": [
     {
-      "name": "Custom Banner Full"
+      "name": "Custom Banner"
     }
   ]
+
 }
+
 {% endschema %}
